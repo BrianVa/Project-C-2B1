@@ -10,10 +10,11 @@ step 4: clone the project to the www folder.<br/>
 step 5: open cmd.<br/>
 step 6: cd with this command into the project folder: cd C:\xampp\htdocs\www\Project-C-2B1-master<br/>
 step 7: excute command: copy .env.example .env<br/>
-step 8: excute command: php artisan key:generate<br/>
-step 9: (optional) setup .env for database.<br/>
-step 10: open xampp and click start on Apache & MySQL.<br/>
-step 11: go to http://localhost/www/Project-C-2B1-master/Laravel/public/ & check if it is working.<br/>
+step 8: excute command: composer install <br/>
+step 9: excute command: php artisan key:generate<br/>
+step 10: (optional) setup .env for database.<br/>
+step 11: open xampp and click start on Apache & MySQL.<br/>
+step 12: go to http://localhost/www/Project-C-2B1-master/public/ & check if it is working.<br/>
 
 
 
