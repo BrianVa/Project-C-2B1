@@ -35,8 +35,8 @@ step 3: add this to the end of the file:<br/>
 </VirtualHost>
 
 ```
-step 4: open notepad as administrator and click on file -> open and go to the following folder C:\Windows\System32\drivers\etc<br/>
-step 5: change text documents on the bottom right to all files and open hosts.<br/>
+step 4: change text documents on the bottom right to all files and open hosts.<br/>
+step 5: open notepad as administrator and click on file -> open and go to the following folder C:\Windows\System32\drivers\etc<br/>
 step 6: add this to the end of the file: <br/>
 ```
 127.0.0.1 localhost
