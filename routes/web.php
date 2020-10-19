@@ -13,14 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+//Facilitator
 
-Route::get('login', function () {
-    return view('login');
-});
 
-Route::get('admin', function () {
-    return view('admin');
-});
+
+//Admin
+Route::get('/gebruikers','EmployeeController@EmployeeView');
+
+
+
+//Medewerker
+Route::get('/dashboard', 'MainController@DashboardView');
+
+
+//General
+Route::post('/loggingin', 'MainController@checklogin');
+Route::get('/logout', 'MainController@logout');
+Route::get('/', 'MainController@LoginView');
+Route::get('/profiel', 'ProfileController@ProfileView');
+
+
+
+
+
+

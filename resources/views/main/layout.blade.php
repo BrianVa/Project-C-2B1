@@ -3,31 +3,36 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cimsolutions</title>
+    <title>@yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ url('/css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ url('/css/dashboard/font-awesome.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ url('/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/css/dashboard/ionicons.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ url('/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/css/dashboard/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="{{ url('/css/google.css') }}">
+    <link rel="stylesheet" href="{{ url('/css/dashboard/google.css') }}">
+
+    @section('includes_css')
+
+    @show
+
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand border-bottom navbar-dark bg-success">
+    <nav class="main-header navbar navbar-expand bg-success navbar-light border-bottom">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class=" fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Dashboard</a>
+                <a href="{{url('/dashboard')}}" class="nav-link">Dashboard</a>
             </li>
         </ul>
 
@@ -100,7 +105,13 @@
                     <img src="{{ url('/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Naam</a>
+                    <a href="#" class="d-block">
+                        @if(isset(Auth::user()->email))
+                            {{ Auth::user()->firstname  }} {{ Auth::user()->lastname  }}
+                        @else
+                            Naam
+                        @endif
+                    </a>
                 </div>
             </div>
 
@@ -119,83 +130,44 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ url('/logout') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Login</p>
+                                    <p>uitloggen</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ url('/profiel') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Registreer</p>
+                                    <p>Profiel</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-tree"></i>
-                            <p>
-                                UI Elements
-                                <i class="fa fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>General</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Icons</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Buttons</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Sliders</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-edit"></i>
-                            <p>
-                                Forms
-                                <i class="fa fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>General Elements</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Advanced Elements</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Editors</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @if(isset(Auth::user()->role_id) == 3)
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-address-card"></i>
+                                <p>
+                                    Beheer
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ url('/gebruikers') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Gebruikers</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Kennissessies</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -205,7 +177,24 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>@yield('page_title')</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">@yield('page_title')</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        @section('content')
 
+        @show
     </div>
     <!-- /.content-wrapper -->
 
@@ -217,23 +206,29 @@
     </footer>
 
     <!-- Control Sidebar -->
-{{--<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-</aside>--}}
-<!-- /.control-sidebar -->
+    {{--<aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>--}}
+    <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
-<script src="{{ url('/js/jquery.min.js') }}"></script>
+<script src="{{ url('/js/dashboard/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{ url('/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url('/js/dashboard/bootstrap.bundle.min.js') }}"></script>
 <!-- SlimScroll -->
-<script src="{{ url('/js/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ url('/js/dashboard/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
-<script src="{{ url('/js/fastclick.min.js') }}"></script>
+<script src="{{ url('/js/dashboard/fastclick.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ url('/js/adminlte.min.js') }}"></script>
+<script src="{{ url('/js/dashboard/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ url('/js/extra.js') }}"></script>
+<script src="{{ url('/js/dashboard/extra.js') }}"></script>
+@section('includes_js')
+
+@show
+@section('jqcode')
+
+@show
 </body>
 </html>
