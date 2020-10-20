@@ -31,6 +31,7 @@ Route::post('/loggingin', 'MainController@checklogin');
 Route::get('/logout', 'MainController@logout');
 Route::get('/', 'MainController@LoginView');
 Route::get('/profiel', 'ProfileController@ProfileView');
+Route::post('/updatedata', 'ProfileController@UpdateUserData');
 
 
 

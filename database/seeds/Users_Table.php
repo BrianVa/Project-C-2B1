@@ -23,7 +23,7 @@ class Users_Table extends Seeder
             'dateofbirth' => new DateTime('06/07/1995'),
             'role_id' => 3,
             'sex_id' => 1,
-            'dietary' => '0',
+            'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
         ]);
@@ -37,7 +37,7 @@ class Users_Table extends Seeder
             'dateofbirth' => new DateTime(),
             'role_id' => 3,
             'sex_id' => 2,
-            'dietary' => '0',
+            'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
         ]);
@@ -51,7 +51,7 @@ class Users_Table extends Seeder
             'dateofbirth' => new DateTime(),
             'role_id' => 3,
             'sex_id' => 2,
-            'dietary' => '0',
+            'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
         ]);
@@ -65,7 +65,7 @@ class Users_Table extends Seeder
             'dateofbirth' => new DateTime(),
             'role_id' => 3,
             'sex_id' => 1,
-            'dietary' => '0',
+            'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
         ]);
@@ -79,7 +79,7 @@ class Users_Table extends Seeder
             'dateofbirth' => new DateTime(),
             'role_id' => 3,
             'sex_id' => 1,
-            'dietary' => '0',
+            'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
         ]);

@@ -12,8 +12,11 @@ class ProfileModel extends Model
 
     function getdata($id){
         $user = DB::table($this->table)
-            ->where('id', $id)
-            ->get();
+            ->join('roles', 'users.role_id','=','roles.id')
+            ->join('sex', 'users.sex_id','=','sex.id')
+            ->select('sex.name as gender', 'roles.name as function', 'users.*')
+            ->where('users.id', $id)
+            ->first();
         return $user;
     }
 }
