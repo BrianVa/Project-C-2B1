@@ -53,7 +53,7 @@
                         <td>{{ $user->gender }}</td>
                         <td>{{ $user->function }}</td>
                         <td>{{ date_format(new Datetime($user->created_at),'d-F-Y h:m:s') }}</td>
-                        <td>{{ $user->active }}</td>
+                        <td>{{ $user->active ? 'Actief' : 'Inactief' }}</td>
                         <td><button type="button" class="btn btn-primary">Meer info</button></td>
                         <td><button type="button" class="btn btn-success">Aanpassen</button></td>
                         <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
