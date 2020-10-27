@@ -47,16 +47,15 @@ step 7: open xampp start Apache & MySQL and go to cimsolutions.test & cimsolutio
 
 _______________________________________________________________________________________________________________________________________________________________________________
 
-usefull commands for Laravel:
+usefull commands for Laravel:<br/>
 
-php artisan list                                 -- list of all commands 
+php artisan list                                 -- list of all commands <br/>
+<br/>
+php artisan make:controller controller name      -- aanmaken controller<br/>
+php artisan make:model model name                -- aanmaken model<br/>
+php artisan make:migration migration name        -- aanmkaken migration<br/>
+php artisan make:seed seed name                  -- aanmaken seeder<br/>
 
-php artisan make:controller controller name      -- aanmaken controller
-php artisan make:model model name                -- aanmaken model
-php artisan make:migration migration name        -- aanmkaken migration
-php artisan make:seed seed name                  -- aanmaken seeder
-
-php artisan migrate:fresh                        -- database opnieuw opbouwen & leeggooien met de migrations
-php artisan db:seed                              -- database opnieuw vullen met de seeders
-
+php artisan migrate:fresh                        -- database opnieuw opbouwen & leeggooien met de migrations<br/>
+php artisan db:seed                              -- database opnieuw vullen met de seeders<br/>
 
