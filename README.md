@@ -44,3 +44,19 @@ step 6: add this to the end of the file: <br/>
 
 ```
 step 7: open xampp start Apache & MySQL and go to cimsolutions.test & cimsolutions.test/admin to check if it is working.<br/>
+
+_______________________________________________________________________________________________________________________________________________________________________________
+
+usefull commands for Laravel:
+
+php artisan list                                 -- list of all commands 
+
+php artisan make:controller controller name      -- aanmaken controller
+php artisan make:model model name                -- aanmaken model
+php artisan make:migration migration name        -- aanmkaken migration
+php artisan make:seed seed name                  -- aanmaken seeder
+
+php artisan migrate:fresh                        -- database opnieuw opbouwen & leeggooien met de migrations
+php artisan db:seed                              -- database opnieuw vullen met de seeders
+
+
