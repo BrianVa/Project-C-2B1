@@ -21,7 +21,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                Footer
+             ----   Hoooii voor Ingrid ----
             </div>
             <!-- /.card-footer-->
         </div>
