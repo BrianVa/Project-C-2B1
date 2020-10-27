@@ -14,10 +14,12 @@
                     <div class="form-group">
                         <label for="">Voornaam:</label>
                         <input type="text" class="form-control" name="firstname" id="" aria-describedby="emailHelp" value="{{ $data->firstname }}">
+                        @error('firstname') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Achternaam:</label>
                         <input type="text" name="lastname" class="form-control" id="" value="{{ $data->lastname }}">
+                        @error('lastname') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Geslacht:</label>
@@ -26,6 +28,7 @@
                     <div class="form-group">
                         <label for="">Email:</label>
                         <input type="email" name="email" class="form-control" id="" value="{{ $data->email }}">
+                        @error('email') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Functie:</label>
@@ -37,20 +40,23 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
-                            <input disabled name="date" type="text" class="form-control" id="inlineFormInputGroupUsername" value="{{ $data->dateofbirth }}">
+                            <input disabled name="date" type="text" class="form-control" id="inlineFormInputGroupUsername" value="{{ date_format(new Datetime($data->dateofbirth),'d-F-Y') }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="">Dieetwensen:</label>
                         <textarea class="form-control" name="diet" id=""  rows="3">{{ $data->dietary }}</textarea>
+                        @error('diet') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Nieuw wachtwoord:</label>
                         <input name="password" type="password" class="form-control" id="" placeholder="">
+                        @error('password') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Herhaal nieuw wachtwoord:</label>
                         <input name="h_password" type="password" class="form-control" id="" placeholder="">
+                        @error('h_password') {{ $message }} @enderror
                     </div>
                     <button type="submit" class="float-right btn btn-primary">Aanpassen</button>
                     <button type="submit" data-dismiss="modal" class="float-left btn btn-secondary">Cancel</button>

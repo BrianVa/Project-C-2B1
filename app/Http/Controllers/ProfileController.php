@@ -27,33 +27,27 @@ class ProfileController extends Controller
         $rules = array(
             "password" => "same:h_password",
             "h_password" => "same:password",
-            "firstname" => "",
-            "lastname" => "",
-            "email" => "",
+            "firstname" => "min:3|max:100|required",
+            "lastname" => "min:3|max:100|required",
+            "email" => "required|email",
             "diet" => "max:255"
         );
-        if($request->firstname != Auth::user()->firstnname){
-            array_merge($rules, array(
-                $rules["firstname"] = "min:3|max:100"
-            ));
-        }
-        if ($request->lastname != Auth::user()->lastname){
-            array_merge($rules, array(
-                $rules["lastname"] = "min:3|max:100"
-            ));
-        }
+
         if ($request->email != Auth::user()->email){
             array_merge($rules, array(
-                $rules["email"] = "email"
+                $rules["email"] = "required|email|unique:users,email"
             ));
         }
-        //print_r($rules);
-        $validator = $request->validate($rules);
 
-        if ($validator->fails()) {
-           echo "whoops";
-        } else {
-            echo "yyeah";
+        $this->validate($request, $rules);
+
+        $profile = new ProfileModel();
+        $result = $profile->updateuser($request,Auth::user()->id);
+
+        if($result){
+            return redirect()->back();
+        }else{
+            return redirect()->back();
         }
     }
 }

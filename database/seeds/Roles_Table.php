@@ -26,6 +26,12 @@ class Roles_Table extends Seeder
 
         DB::table('Roles')->insert([
             'id' => 3,
+            'name' => 'Manager',
+            'active' => true
+        ]);
+
+        DB::table('Roles')->insert([
+            'id' => 4,
             'name' => 'Admin',
             'active' => true
         ]);

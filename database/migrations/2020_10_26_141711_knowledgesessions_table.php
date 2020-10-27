@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SexTable extends Migration
+class KnowledgesessionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class SexTable extends Migration
      */
     public function up()
     {
-        Schema::create('Sex', function (Blueprint $table) {
+        Schema::create('Knowledgesessions', function (Blueprint $table) {
             $table->id();
-            $table->string('name','255');
+            $table->string('title', '255');
+            $table->text('desc');
+            $table->dateTime('begin_date');
+            $table->dateTime('end_date');
+            $table->integer('max_atendees');
+            $table->integer('min_atendees');
+            $table->integer('user_id');
             $table->boolean('active')->default('1');
             $table->timestamps();
         });
@@ -28,6 +34,6 @@ class SexTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Sex');
+        Schema::drop('Knowledgesessions');
     }
 }

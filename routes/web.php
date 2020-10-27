@@ -13,18 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Facilitator
-
-
-
 //Admin
 Route::get('/gebruikers','EmployeeController@EmployeeView');
 
-
-
 //Medewerker
 Route::get('/dashboard', 'MainController@DashboardView');
-
 
 //General
 Route::post('/loggingin', 'MainController@checklogin');
@@ -32,6 +25,11 @@ Route::get('/logout', 'MainController@logout');
 Route::get('/', 'MainController@LoginView');
 Route::get('/profiel', 'ProfileController@ProfileView');
 Route::post('/updatedata', 'ProfileController@UpdateUserData');
+
+//Knowledge sessions
+Route::get('/kennissessies', 'KnowledgesessionController@KnowledgesessionView');
+Route::get('/kennissessies/toevoegen', 'KnowledgesessionController@addView');
+Route::post('/addingsession', 'KnowledgesessionController@addSession');
 
 
 

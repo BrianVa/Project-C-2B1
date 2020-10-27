@@ -49,10 +49,10 @@
                     <tr>
                         <td>{{ $user->firstname }}  {{ $user->lastname }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->dateofbirth }}</td>
-                        <td>{{ $user->sex_id }}</td>
-                        <td>{{ $user->role_id }}</td>
-                        <td>{{ $user->created_at }}</td>
+                        <td>{{ date_format(new Datetime($user->dateofbirth),'d/m/Y') }}</td>
+                        <td>{{ $user->gender }}</td>
+                        <td>{{ $user->function }}</td>
+                        <td>{{ date_format(new Datetime($user->created_at),'d-F-Y h:m:s') }}</td>
                         <td>{{ $user->active }}</td>
                         <td><button type="button" class="btn btn-primary">Meer info</button></td>
                         <td><button type="button" class="btn btn-success">Aanpassen</button></td>

@@ -125,7 +125,7 @@
                             <i class="nav-icon fa fa-user-circle"></i>
                             <p>
                                 Account
-                                <i class="right fa fa-angle-left"></i>
+                                <i class="right fa fa-angle-right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
@@ -149,20 +149,32 @@
                                 <i class="nav-icon fa fa-address-card"></i>
                                 <p>
                                     Beheer
-                                    <i class="right fa fa-angle-left"></i>
+                                    <i class="right fa fa-angle-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ url('/gebruikers') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Gebruikers</p>
+                                        <p>Gebruikers Overzicht</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Kennissessies</p>
+                                        <p>Gebruikers Toevoegen</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/kennissessies') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Kennissessies Overzicht</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/kennissessies/toevoegen') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Kennissessies Toevoegen</p>
                                     </a>
                                 </li>
                             </ul>

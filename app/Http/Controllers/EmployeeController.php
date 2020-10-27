@@ -11,7 +11,8 @@ class EmployeeController extends Controller
 
     function EmployeeView(){
         if(isset(Auth::user()->email)) {
-            $users = EmployeeModel::all();
+            $Employee = new EmployeeModel();
+            $users = $Employee->GetUsers();
             return view('employee/overview', [
                 'users' => $users
             ]);

@@ -20,7 +20,7 @@ class Users_Table extends Seeder
             'email' => '0952635@hr.nl',
             'password' => Hash::make('test'),
             'active' => true,
-            'dateofbirth' => new DateTime('06/07/1995'),
+            'dateofbirth' => new DateTime('07/06/1995'),
             'role_id' => 3,
             'sex_id' => 1,
             'dietary' => null,
