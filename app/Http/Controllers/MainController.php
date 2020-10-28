@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Dotenv\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\MainModel;
+use App\Rules\CimsolutionEmail;
+use App\SexModel;
 
 class MainController extends Controller
 {
@@ -15,9 +18,11 @@ class MainController extends Controller
             return redirect('/dashboard');
         }
         else{
-            return view('login/login');
+            $sexes = SexModel::all();
+            return view('login/login', [
+                'sexes' => $sexes
+            ]);
         }
-
     }
 
     function DashboardView()
@@ -58,5 +63,32 @@ class MainController extends Controller
 
         Auth::logout();
         return redirect('/');
+    }
+
+    function register(Request $request){
+
+        $this->validate($request, [
+            "password" => "required|same:h_password",
+            "h_password" => "required|same:password",
+            "firstname" => "required|min:3|max:100",
+            "lastname" => "required|min:3|max:100",
+            "email" => [
+                "required",
+                "email",
+                "unique:users",
+                new CimsolutionEmail()
+            ],
+            "sex" => "required|gt:0",
+            "diet" => "max:255"
+        ]);
+
+        $session = new MainModel();
+        $result = $session->insertuser($request);
+
+        if($result){
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
     }
 }

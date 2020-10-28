@@ -21,6 +21,7 @@ Route::get('/dashboard', 'MainController@DashboardView');
 
 //General
 Route::post('/loggingin', 'MainController@checklogin');
+Route::post('/register', 'MainController@register');
 Route::get('/logout', 'MainController@logout');
 Route::get('/', 'MainController@LoginView');
 Route::get('/profiel', 'ProfileController@ProfileView');

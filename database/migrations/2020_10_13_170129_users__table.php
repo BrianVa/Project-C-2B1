@@ -21,7 +21,7 @@ class UsersTable extends Migration
             $table->string('firstname','255');
             $table->string('lastname', '255');
             $table->dateTime('dateofbirth');
-            $table->integer('role_id');
+            $table->integer('role_id')->default(1);
             $table->integer('sex_id');
             $table->string('dietary','255')->nullable();
             $table->rememberToken();
