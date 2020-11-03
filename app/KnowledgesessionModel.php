@@ -29,7 +29,6 @@ class KnowledgesessionModel extends Model
         else{
             return false;
         }
-
     }
     function GetSessions(){
 
