@@ -48,7 +48,7 @@
                     <td>{{$session->title}}</td>
                     <td>{{ date_format(new Datetime($session->begin_date),'D j F G:i Y') }}</td>
                     <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
-                    <td>Ingrid</td>
+                    <td>{{$session ->firstname }} {{$session->lastname}}</td>
                     <td><button type="button" class="btn btn-primary">Meer info</button></td>
                     <td><button type="button" class="btn btn-success">Aanpassen</button></td>
                     <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
