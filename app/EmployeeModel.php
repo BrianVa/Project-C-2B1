@@ -15,6 +15,8 @@ class EmployeeModel extends Model
             ->join('sex', 'users.sex_id','=','sex.id')
             ->select('sex.name as gender', 'roles.name as function', 'users.*')
             ->get();
+
         return $user;
     }
 }
+

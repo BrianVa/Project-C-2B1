@@ -22,6 +22,7 @@ class KnowledgesessionModel extends Model
         );
         $insert = DB::table($this->table)->insert($data);
 
+
         if($insert !== false){
             return true;
         }
@@ -29,6 +30,12 @@ class KnowledgesessionModel extends Model
             return false;
         }
 
+    }
+    function GetSessions(){
+        // $results = DB::select('select k.id=k_id, u.id=u_id * from knowledgesessions as k inner join users as u where k.user_id = u.id');
+        //$results = DB::select('select k.id, u.id from knowledgesessions as k inner join users as u where k.user_id = u.id');
+        $results = DB::select('select *, k.id as k_id, u.id as u_id from knowledgesessions k inner join users u ON k.id = u.id');
+        return $results;
     }
 
 }

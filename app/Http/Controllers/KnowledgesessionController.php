@@ -11,9 +11,10 @@ class KnowledgesessionController extends Controller
     function KnowledgesessionView(){
         if(isset(Auth::user()->email))
         {
-            $data = KnowledgesessionModel::all();
+            $data = new KnowledgesessionModel();
+            $session = $data->getSessions();
             return view('KnowledgeSession/overview', [
-                'data' => $data
+                'data' => $session
             ]);
         }
         else{
