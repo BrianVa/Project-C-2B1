@@ -31,6 +31,7 @@ Route::post('/updatedata', 'ProfileController@UpdateUserData');
 Route::get('/kennissessies', 'KnowledgesessionController@KnowledgesessionView');
 Route::get('/kennissessies/toevoegen', 'KnowledgesessionController@addView');
 Route::post('/addingsession', 'KnowledgesessionController@addSession');
+Route::get('/kennissessie/{id}','KnowledgesessionController@SessionUserView');
 
 
 
