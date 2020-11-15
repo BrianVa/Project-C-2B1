@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-body">
-               <p>{{$data->title}}  </p>
+               <p>{{$data->desc}}  </p>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">

@@ -141,6 +141,12 @@
                                     <p>Profiel</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/kennissessie/1') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Aanmelden sessie</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     @if(isset(Auth::user()->role_id) == 3)
