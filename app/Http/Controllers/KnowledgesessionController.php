@@ -55,4 +55,21 @@ class KnowledgesessionController extends Controller
             return redirect()->back();
         }
     }
+
+    function SessionUserView(Request $request){
+
+        if(isset(Auth::user()->email))
+        {
+            $session = new KnowledgesessionModel();
+            $data = $session->getSessionDetails($request->route('id'));
+            return view('KnowledgeSession/userview', [
+                'data' => $data
+            ]);
+        }
+        else{
+            return redirect('/');
+        }
+
+
+    }
 }
