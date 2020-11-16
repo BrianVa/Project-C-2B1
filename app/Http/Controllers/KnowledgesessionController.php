@@ -66,10 +66,8 @@ class KnowledgesessionController extends Controller
                 'data' => $data
             ]);
         }
-        else{
+        else {
             return redirect('/');
         }
-
-
     }
 }

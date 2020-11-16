@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\KnowledgesessionModel;
-use Illuminate\Http\Request;
 use App\EmployeeModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
@@ -12,9 +11,10 @@ class EmployeeController extends Controller
 
     function EmployeeView(){
         if(isset(Auth::user()->email)) {
-            $data = KnowledgesessionModel::all();
+            $Employee = new EmployeeModel();
+            $users = $Employee->GetUsers();
             return view('employee/overview', [
-                'users' => $data
+                'users' => $users
             ]);
         }else{
             return redirect('/');
