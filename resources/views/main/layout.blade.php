@@ -105,7 +105,7 @@
                     <img src="{{ url('/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">
+                    <a href="{{ url('/profiel') }}" class="d-block">
                         @if(isset(Auth::user()->email))
                             {{ Auth::user()->firstname  }} {{ Auth::user()->lastname  }}
                         @else
