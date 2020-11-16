@@ -39,8 +39,7 @@
                         <th>Role</th>
                         <th>Aangemeld op</th>
                         <th>Actief</th>
-                        <th>Meer info</th>
-                        <th>Aanpassen</th>
+                        <th>Bekijken</th>
                         <th>Verwijderen</th>
                     </tr>
                     </thead>
@@ -52,10 +51,9 @@
                         <td>{{ date_format(new Datetime($user->dateofbirth),'d/m/Y') }}</td>
                         <td>{{ $user->gender }}</td>
                         <td>{{ $user->function }}</td>
-                        <td>{{ date_format(new Datetime($user->created_at),'d-F-Y h:m:s') }}</td>
+                        <td>{{ date_format(new Datetime($user->created_at),'d-m-Y') }}</td>
                         <td>{{ $user->active ? 'Actief' : 'Inactief' }}</td>
-                        <td><button type="button" class="btn btn-primary">Meer info</button></td>
-                        <td><button type="button" class="btn btn-success">Aanpassen</button></td>
+                        <td> <a href="{{url('/gebruiker')}}/{{$user->id}}"  class="btn btn-primary btn-block"><b>Bekijken</b></a></td>
                         <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
                     </tr>
                     @endforeach

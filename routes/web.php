@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 //Admin
 Route::get('/gebruikers','EmployeeController@EmployeeView');
+Route::get('/gebruiker/{id}', 'EmployeeController@EmployeeDetails');
+Route::post('/updategebruiker', 'EmployeeController@UpdateEmployee');
 
 //Medewerker
 Route::get('/dashboard', 'MainController@DashboardView');

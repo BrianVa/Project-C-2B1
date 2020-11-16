@@ -50,12 +50,12 @@
                     </div>
                     <div class="form-group">
                         <label for="">Nieuw wachtwoord:</label>
-                        <input name="password" type="password" class="form-control" id="" placeholder="">
+                        <input disabled name="password" type="password" class="form-control" id="" placeholder="">
                         @error('password') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Herhaal nieuw wachtwoord:</label>
-                        <input name="h_password" type="password" class="form-control" id="" placeholder="">
+                        <input disabled name="h_password" type="password" class="form-control" id="" placeholder="">
                         @error('h_password') {{ $message }} @enderror
                     </div>
                     <button type="submit" class="float-right btn btn-primary">Aanpassen</button>
