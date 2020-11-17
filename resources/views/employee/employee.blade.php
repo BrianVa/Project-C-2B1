@@ -53,7 +53,12 @@
                     </div>
                     <div class="form-group">
                         <label for="">Functie:</label>
-                        <input type="text" disabled name="role" class="form-control" id="" value="{{$employee->function}}">
+                        <select name="role" class="form-control">
+                            @foreach($roles as $role)
+                                <option @if($employee->role_id == $role->id) selected @endif value="{{$role->id}}">{{$role->name}}</option>
+                            @endforeach
+                        </select>
+                        <!--<input disabled type="text"  name="role" class="form-control" id="" value="{{$employee->function}}">-->
                     </div>
                     <div class="form-group ">
                         <label for="">Geboorte Datum:</label>
