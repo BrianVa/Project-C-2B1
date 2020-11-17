@@ -107,9 +107,9 @@
                 <div class="info">
                     <a href="{{ url('/profiel') }}" class="d-block">
                         @if(isset(Auth::user()->email))
-                            {{ Auth::user()->firstname  }} {{ Auth::user()->lastname  }}
+                            {{ Auth::user()->firstname }}  {{ Auth::user()->lastname }}
                         @else
-                            Naam
+                           Name
                         @endif
                     </a>
                 </div>
@@ -141,15 +141,9 @@
                                     <p>Profiel</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/kennissessie/1') }}" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Aanmelden sessie</p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
-                    @if(isset(Auth::user()->role_id) > 1)
+                    @if(Auth::user()->role_id > 1)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-address-card"></i>
