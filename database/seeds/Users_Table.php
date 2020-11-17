@@ -83,5 +83,19 @@ class Users_Table extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
         ]);
+//test
+        DB::table('Users')->insert([
+            'firstname' => 'test',
+            'lastname' => 'Cimsolutions',
+            'email' => 'test@cimsolutions.nl',
+            'password' => Hash::make('test'),
+            'active' => true,
+            'dateofbirth' => new DateTime('05/03/1986'),
+            'role_id' => 1,
+            'sex_id' => 1,
+            'dietary' => null,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
     }
 }

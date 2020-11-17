@@ -48,12 +48,10 @@
                     <td>{{ date_format(new Datetime($session->begin_date),'D j F G:i Y') }}</td>
                     <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
                     <td>{{$session ->firstname }} {{$session->lastname}}</td>
-                    <td><button type="button" class="btn btn-primary">Meer info</button></td>
+                    <td> <a href="{{url('/kennissessie')}}/{{$session->k_id}}"  class="btn btn-primary btn-block"><b>Bekijken</b></a></td>
                     <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
                 </tr>
                 @endforeach
-
-
                 </table>
             </div>
             <!-- /.card-body -->

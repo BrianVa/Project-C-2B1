@@ -149,7 +149,7 @@
                             </li>
                         </ul>
                     </li>
-                    @if(isset(Auth::user()->role_id) == 3)
+                    @if(isset(Auth::user()->role_id) > 1)
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-address-card"></i>
@@ -186,6 +186,23 @@
                             </ul>
                         </li>
                     @endif
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-list"></i>
+                            <p>
+                                Kennissessies
+                                <i class="right fa fa-angle-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ url('/kennissessies') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Overzicht</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
