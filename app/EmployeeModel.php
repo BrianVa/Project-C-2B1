@@ -37,7 +37,7 @@ class EmployeeModel extends Model
             "lastname" => $request->lastname,
             "email" => $request->email,
             "dietary" => $request->diet,
-
+            "role_id" => $request->role
         );
 
         if($request->password){

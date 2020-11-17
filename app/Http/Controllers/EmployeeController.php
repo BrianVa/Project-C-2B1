@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeModel;
+use App\RoleModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +27,10 @@ class EmployeeController extends Controller
         $userid = $request->route('id');
         $Employee = new EmployeeModel();
         $users = $Employee->GetUser($userid);
+        $roles = RoleModel::all();
         return view('employee/employee', [
-            'employee' => $users
+            'employee' => $users,
+            'roles' => $roles
         ]);
     }
 
@@ -39,7 +42,8 @@ class EmployeeController extends Controller
             "firstname" => "min:3|max:100|required",
             "lastname" => "min:3|max:100|required",
             "email" => "required|email",
-            "diet" => "max:255"
+            "diet" => "max:255",
+            "role" => "required"
         );
 
         if ($request->email != $request->oldemail){
