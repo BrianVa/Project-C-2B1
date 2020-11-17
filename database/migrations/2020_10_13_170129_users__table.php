@@ -14,17 +14,25 @@ class UsersTable extends Migration
     public function up()
     {
         Schema::create('Users', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('email')->unique();
             $table->string('password', '100');
             $table->boolean('active')->default('1');
             $table->string('firstname','255');
             $table->string('lastname', '255');
             $table->dateTime('dateofbirth');
-            $table->integer('role_id')->default(1);
-            $table->integer('sex_id');
             $table->string('dietary','255')->nullable();
+
+            $table->index('role_id');
+            $table->integer('role_id')->unsigned();
+            $table->foreign('role_id')->references('id')->on('Roles')->onDelete('cascade');;
+
+            $table->index('sex_id');
+            $table->integer('sex_id')->unsigned();
+            $table->foreign('sex_id')->references('id')->on('Sex')->onDelete('cascade');;
+
             $table->rememberToken();
+
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class SexTable extends Migration
     public function up()
     {
         Schema::create('Sex', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name','255');
             $table->boolean('active')->default('1');
             $table->timestamps();

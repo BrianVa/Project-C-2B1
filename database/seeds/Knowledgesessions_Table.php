@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class Knowledgesessions_Table extends Seeder
 {
@@ -22,7 +23,7 @@ class Knowledgesessions_Table extends Seeder
             'end_date' => new DateTime('10/11/2020 12:00:00'),
             'max_atendees' => 10,
             'min_atendees' => 5,
-            'user_id' => 5,
+            'user_id' => User::all()->random()->id,
             'active' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
@@ -36,7 +37,7 @@ class Knowledgesessions_Table extends Seeder
             'end_date' => new DateTime('10/11/2020 12:00:00'),
             'max_atendees' => 10,
             'min_atendees' => 5,
-            'user_id' => 2,
+            'user_id' => User::all()->random()->id,
             'active' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
@@ -50,7 +51,7 @@ class Knowledgesessions_Table extends Seeder
             'end_date' => new DateTime('10/11/2020 12:00:00'),
             'max_atendees' => 10,
             'min_atendees' => 5,
-            'user_id' => 1,
+            'user_id' => User::all()->random()->id,
             'active' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
