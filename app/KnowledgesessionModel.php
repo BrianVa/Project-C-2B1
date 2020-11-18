@@ -4,6 +4,7 @@ namespace App;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class KnowledgesessionModel extends Model
@@ -35,13 +36,19 @@ class KnowledgesessionModel extends Model
         #$query = "count(case when sessionorders.know_id = false then 1 else null end) as orders";
         #$query = "count(IF(sessionorders.cancelled = false, 1, NULL)) as orders";
         $query = 'COUNT(sessionorders.know_id) as orders';
+        $select = [
+            ['knowledgesessions.begin_date','>=', $now],
+        ];
+        if (Auth::user()->role_id == 2){
+            array_merge($select, array(
+                $select[1] = ['knowledgesessions.user_id','=', Auth::user()->id]
+            ));
+        }
         return DB::table($this->table)
             ->select(array('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id', 'knowledgesessions.*', 'users.*', DB::raw($query)))
             ->Leftjoin('users', 'knowledgesessions.user_id','=','users.id')
             ->LeftJoin('sessionorders', 'sessionorders.know_id','=','knowledgesessions.id')
-            ->where([
-                ['knowledgesessions.begin_date','>=', $now]
-            ])
+            ->where($select)
             ->groupBy('knowledgesessions.id')
             ->orderBy('knowledgesessions.begin_date', 'asc')
             ->get();

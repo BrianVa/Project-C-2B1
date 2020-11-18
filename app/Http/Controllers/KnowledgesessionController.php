@@ -29,7 +29,6 @@ class KnowledgesessionController extends Controller
         {
             $data = new KnowledgesessionModel();
             $gebruikers = $data->getUsers();
-            //print_r($gebruikers);
             return view('KnowledgeSession/add', [
                 'gebruikers' => $gebruikers
             ]);
