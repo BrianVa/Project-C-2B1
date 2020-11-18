@@ -97,6 +97,20 @@ class KnowledgesessionController extends Controller
         }
     }
     function CancelSession(Request $request){
+        if(isset(Auth::user()->email))
+        {
+            $session = new SessionOrderModel();
+            $data = $session->CancelSession($request->route('id'));
 
+            if($data){
+                return redirect()->back();
+            }else{
+                return redirect()->back();
+            }
+
+        }
+        else {
+            return redirect('/');
+        }
     }
 }

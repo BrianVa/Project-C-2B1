@@ -33,9 +33,6 @@ class KnowledgesessionModel extends Model
     }
     function GetSessions(){
         $now = new DateTime();
-        #$query = "count(case when sessionorders.know_id = false then 1 else null end) as orders";
-        #$query = "count(IF(sessionorders.cancelled = false, 1, NULL)) as orders";
-        $query = 'COUNT(sessionorders.know_id) as orders';
         $select = [
             ['knowledgesessions.begin_date','>=', $now],
         ];
@@ -44,15 +41,37 @@ class KnowledgesessionModel extends Model
                 $select[1] = ['knowledgesessions.user_id','=', Auth::user()->id]
             ));
         }
-        return DB::table($this->table)
-            ->select(array('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id', 'knowledgesessions.*', 'users.*', DB::raw($query)))
+        $sessions = DB::table($this->table)
+            ->select(array('knowledgesessions.id as k_id', 'users.id as u_id', 'knowledgesessions.*', 'users.*'))
             ->Leftjoin('users', 'knowledgesessions.user_id','=','users.id')
-            ->LeftJoin('sessionorders', 'sessionorders.know_id','=','knowledgesessions.id')
             ->where($select)
             ->groupBy('knowledgesessions.id')
             ->orderBy('knowledgesessions.begin_date', 'asc')
             ->get();
 
+        $orders = DB::table('sessionorders')
+            ->select(array('sessionorders.know_id',DB::raw('COUNT(sessionorders.id) as orders')))
+            ->where('sessionorders.cancelled','=',0)
+            ->groupBy('sessionorders.know_id')
+            ->get();
+
+        if ($orders->isEmpty()) {
+            foreach ($sessions as $session){
+                $session->orders = 0;
+            }
+        }
+        else{
+            foreach ($orders as $order) {
+                foreach ($sessions as $session) {
+                    if ($order->know_id == $session->k_id) {
+                        $session->orders = $order->orders;
+                    } else {
+                        $session->orders = 0;
+                    }
+                }
+            }
+        }
+        return $sessions;
     }
 
     function getSessionDetails($id){

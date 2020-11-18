@@ -136,7 +136,7 @@
                                                 <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
                                                 <td>{{ $session ->firstname }} {{$session->lastname }}</td>
                                                 <td>{{ date_format(new Datetime($session->sign_up_at),'D j F G:i Y') }}</td>
-                                                <td> <a href="{{url('/annuleer')}}/{{ $session->s_id }}"  class="btn btn-danger btn-block"><b>Bekijken</b></a></td>
+                                                <td> <a href="{{url('/annuleer')}}/{{ $session->s_id }}"  class="btn btn-danger btn-block"><b>Annuleren</b></a></td>
                                             </tr>
                                         @endforeach
                                     </table>

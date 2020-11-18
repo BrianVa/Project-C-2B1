@@ -52,7 +52,7 @@
                     <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
                     <td>{{ $session ->firstname }} {{ $session->lastname }}</td>
                     <td>({{ $session->max_atendees - $session->orders }}/{{ $session->max_atendees }})</td>
-                    <td> <a href="{{url('/kennissessie')}}/{{ $session->k_id }}"  class="btn btn-primary btn-block"><b>Bekijken</b></a></td>
+                    <td> <a href="{{url('/kennissessie')}}/{{ $session->k_id }}"  @if($session->max_atendees == $session->max_atendees - $session->orders)class="btn btn-primary btn-block" @else class="btn btn-primary btn-block disabled" @endif><b>Bekijken</b></a></td>
                     @if(Auth::user()->role_id > 1)
                         <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
                     @endif
