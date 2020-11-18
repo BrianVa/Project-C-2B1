@@ -3,17 +3,19 @@
 @section('page_title', "Profiel")
 @section('includes_css')
     <link rel="stylesheet" href="{{ url('/css/datetimepicker/date.css') }}">
+    <link rel="stylesheet" href="{{ url('/css/datatables/datatable.css') }}">
 @endsection
 @section('includes_js')
     <script src="{{ url('/js/datetimepicker/moment.js') }}"></script>
     <script src="{{ url('/js/datetimepicker/date.js') }}"></script>
+    <script src="{{ url('/js/datatables/datatable.js') }}"></script>
 @endsection
 @section('jqcode')
-<script>
-    $(document).ready(function(){
-        $('.date').datetimepicker();
-    });
-</script>
+    <script>
+        $(document).ready( function () {
+            $('.SessionOverview').DataTable();
+        } );
+    </script>
 @endsection
 @section('content')
     <!-- Main content -->
@@ -30,7 +32,6 @@
                                      src="{{ url('/img/user2-160x160.jpg') }}"
                                      alt="User profile picture">
                             </div>
-
                             <h3 class="profile-username text-center">{{ Auth::user()->firstname  }} {{ Auth::user()->lastname  }}</h3>
                             <a href="#" data-toggle="modal" data-target="#data" class="btn btn-primary btn-block"><b>Gegevens wijzigen</b></a>
                         </div>
@@ -82,21 +83,90 @@
                             <ul class="nav nav-pills">
                                 <li class="nav-item"><a class="nav-link active" href="#done" data-toggle="tab">Voltooid</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#soon" data-toggle="tab">Binnenkort</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#todo" data-toggle="tab">Niet Behaald</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#todo" data-toggle="tab">Geannuleerd</a></li>
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="active tab-pane" id="done">
-                                    <p>Voltooid</p>
+                                    <table id="" class="display SessionOverview">
+                                        <thead>
+                                        <tr>
+                                            <th>Sessie</th>
+                                            <th>Begin tijd</th>
+                                            <th>Eind tijd</th>
+                                            <th>Sessie leider</th>
+                                            <th>Aangemeld</th>
+                                            <th>Annuleren</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach($sessionsdone as $session)
+                                            <tr>
+                                                <td>{{ $session->title }}</td>
+                                                <td>{{ date_format(new Datetime($session->begin_date),'D j F G:i Y') }}</td>
+                                                <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
+                                                <td>{{ $session ->firstname }} {{$session->lastname }}</td>
+                                                <td>{{ date_format(new Datetime($session->sign_up_at),'D j F G:i Y') }}</td>
+                                                <td><button disabled type="button" class="btn btn-danger">Annuleren</button></td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="soon">
-                                    <p>Binnenkort</p>
+                                    <table id="" class="display SessionOverview">
+                                        <thead>
+                                        <tr>
+                                            <th>Sessie</th>
+                                            <th>Begin tijd</th>
+                                            <th>Eind tijd</th>
+                                            <th>Sessie leider</th>
+                                            <th>Aangemeld</th>
+                                            <th>Annuleren</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach($sessionsnow as $session)
+                                            <tr>
+                                                <td>{{ $session->title }}</td>
+                                                <td>{{ date_format(new Datetime($session->begin_date),'D j F G:i Y') }}</td>
+                                                <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
+                                                <td>{{ $session ->firstname }} {{$session->lastname }}</td>
+                                                <td>{{ date_format(new Datetime($session->sign_up_at),'D j F G:i Y') }}</td>
+                                                <td> <a href="{{url('/annuleer')}}/{{ $session->s_id }}"  class="btn btn-danger btn-block"><b>Bekijken</b></a></td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="todo">
-                                <p>Niet behaald</p>
+                                    <table id="" class="display SessionOverview">
+                                        <thead>
+                                        <tr>
+                                            <th>Sessie</th>
+                                            <th>Begin tijd</th>
+                                            <th>Eind tijd</th>
+                                            <th>Sessie leider</th>
+                                            <th>Aangemeld</th>
+                                            <th>Annuleren</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach($sessionscan as $session)
+                                            <tr>
+                                                <td>{{ $session->title }}</td>
+                                                <td>{{ date_format(new Datetime($session->begin_date),'D j F G:i Y') }}</td>
+                                                <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
+                                                <td>{{ $session ->firstname }} {{$session->lastname }}</td>
+                                                <td>{{ date_format(new Datetime($session->sign_up_at),'D j F G:i Y') }}</td>
+                                                <td><button disabled type="button" class="btn btn-danger">Annuleren</button></td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
                                 </div>
                             </div>
                             <!-- /.tab-content -->

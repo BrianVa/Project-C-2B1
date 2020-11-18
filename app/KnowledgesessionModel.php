@@ -31,20 +31,30 @@ class KnowledgesessionModel extends Model
         }
     }
     function GetSessions(){
+        $now = new DateTime();
+        #$query = "count(case when sessionorders.know_id = false then 1 else null end) as orders";
+        #$query = "count(IF(sessionorders.cancelled = false, 1, NULL)) as orders";
+        $query = 'COUNT(sessionorders.know_id) as orders';
+        return DB::table($this->table)
+            ->select(array('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id', 'knowledgesessions.*', 'users.*', DB::raw($query)))
+            ->Leftjoin('users', 'knowledgesessions.user_id','=','users.id')
+            ->LeftJoin('sessionorders', 'sessionorders.know_id','=','knowledgesessions.id')
+            ->where([
+                ['knowledgesessions.begin_date','>=', $now]
+            ])
+            ->groupBy('knowledgesessions.id')
+            ->orderBy('knowledgesessions.begin_date', 'asc')
+            ->get();
 
-        $results = DB::select('select *, k.id as k_id, u.id as u_id from knowledgesessions k inner join users u ON k.user_id = u.id');
-        return $results;
     }
 
     function getSessionDetails($id){
 
-        $session = DB::table($this->table)
+        return DB::table($this->table)
             ->join('users', 'knowledgesessions.user_id','=','users.id')
-            ->select()
+            ->select('knowledgesessions.id as know_id', 'knowledgesessions.*', 'users.*')
             ->where('knowledgesessions.id', $id)
             ->first();
-
-        return $session;
 
     }
 

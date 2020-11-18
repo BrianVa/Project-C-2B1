@@ -13,48 +13,21 @@ class Knowledgesessions_Table extends Seeder
      */
     public function run()
     {
-
-// sessies
-        DB::table('knowledgesessions')->insert([
-            'id' => 1,
-            'title' => 'Basis sessie',
-            'desc' => 'Dit is de eerste sessie die je nodig hebt',
-            'begin_date' => new DateTime('10/11/2020 11:00:00'),
-            'end_date' => new DateTime('10/11/2020 12:00:00'),
-            'max_atendees' => 10,
-            'min_atendees' => 5,
-            'user_id' => User::all()->random()->id,
-            'active' => true,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime()
-        ]);
-
-        DB::table('knowledgesessions')->insert([
-            'id' => 2,
-            'title' => 'Basis sessie2',
-            'desc' => 'Dit is de eerste sessie die je nodig hebt',
-            'begin_date' => new DateTime('10/11/2020 11:00:00'),
-            'end_date' => new DateTime('10/11/2020 12:00:00'),
-            'max_atendees' => 10,
-            'min_atendees' => 5,
-            'user_id' => User::all()->random()->id,
-            'active' => true,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime()
-        ]);
-
-        DB::table('knowledgesessions')->insert([
-            'id' => 3,
-            'title' => 'Basis sessie3',
-            'desc' => 'Dit is de eerste sessie die je nodig hebt',
-            'begin_date' => new DateTime('10/11/2020 11:00:00'),
-            'end_date' => new DateTime('10/11/2020 12:00:00'),
-            'max_atendees' => 10,
-            'min_atendees' => 5,
-            'user_id' => User::all()->random()->id,
-            'active' => true,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime()
-        ]);
+        for ($x = 1; $x <= 40; $x++) {
+            $date = new DateTime('+'.strval($x).' week');
+            $date2 = new DateTime('+'.strval($x + 1).' week');
+            DB::table('knowledgesessions')->insert([
+                'title' => 'kennissessie '.strval($x),
+                'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at dignissim eros. Aliquam porttitor at lacus quis pretium. Vestibulum egestas efficitur viverra. Pellentesque posuere, metus eget pretium luctus, nisl nisi facilisis dolor, in dignissim velit quam non massa. Phasellus sagittis massa sit amet hendrerit posuere. Donec dapibus, nulla et consectetur vulputate, lectus ex dapibus dui, id pulvinar mauris magna et lacus. Curabitur ac feugiat mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus lacinia pellentesque eros.',
+                'begin_date' => $date,
+                'end_date' => $date2,
+                'max_atendees' => 20,
+                'min_atendees' => 5,
+                'user_id' => User::all()->random()->id,
+                'active' => true,
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime()
+            ]);
+        }
     }
 }

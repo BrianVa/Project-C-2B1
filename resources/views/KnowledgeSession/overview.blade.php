@@ -36,20 +36,26 @@
                     <th>Begin tijd</th>
                     <th>Eind tijd</th>
                     <th>Sessie leider</th>
+                    <th>Plekken vrij</th>
                     <th>Meer info</th>
-                    <th>Verwijderen</th>
+                    @if(Auth::user()->role_id > 1)
+                        <th>Verwijderen</th>
+                    @endif
                 </tr>
                 </thead>
 
                 <tbody>
                 @foreach($data as $session)
                 <tr>
-                    <td>{{$session->title}}</td>
+                    <td>{{ $session->title }}</td>
                     <td>{{ date_format(new Datetime($session->begin_date),'D j F G:i Y') }}</td>
                     <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
-                    <td>{{$session ->firstname }} {{$session->lastname}}</td>
-                    <td> <a href="{{url('/kennissessie')}}/{{$session->k_id}}"  class="btn btn-primary btn-block"><b>Bekijken</b></a></td>
-                    <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
+                    <td>{{ $session ->firstname }} {{ $session->lastname }}</td>
+                    <td>({{ $session->max_atendees - $session->orders }}/{{ $session->max_atendees }})</td>
+                    <td> <a href="{{url('/kennissessie')}}/{{ $session->k_id }}"  class="btn btn-primary btn-block"><b>Bekijken</b></a></td>
+                    @if(Auth::user()->role_id > 1)
+                        <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
+                    @endif
                 </tr>
                 @endforeach
                 </table>

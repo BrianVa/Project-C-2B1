@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProfileModel;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -14,8 +13,14 @@ class ProfileController extends Controller
         if(isset(Auth::user()->email)) {
             $profile = new ProfileModel();
             $data = $profile->getdata(Auth::user()->id);
+            $sessionsnow = $profile->getsessionsorders(Auth::user()->id, 'now');
+            $sessionsdone = $profile->getsessionsorders(Auth::user()->id, 'done');
+            $sessionscan = $profile->getsessionsorders(Auth::user()->id, 'can');
             return view('profile/profile', [
-                'data' => $data
+                'data' => $data,
+                'sessionsnow' => $sessionsnow,
+                'sessionsdone' => $sessionsdone,
+                'sessionscan' => $sessionscan
             ]);
         }
         else{

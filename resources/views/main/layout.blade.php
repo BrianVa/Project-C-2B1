@@ -229,7 +229,7 @@
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 0.0.1
+            <b>Version</b> 0.0.1 Alpha
         </div>
         <strong>&copy; 2020 <a href="https://www.cimsolutions.nl/nl" target="_blank">CIMSOLUTIONS</a>.</strong> All Rights Reserved.
     </footer>

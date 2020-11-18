@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="data" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div id="data" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Mijn Gegevens</h5>
@@ -12,14 +12,18 @@
                 <form method="post" action="{{ url('/updatedata') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="">Voornaam:</label>
-                        <input type="text" class="form-control" name="firstname" id="" aria-describedby="emailHelp" value="{{ $data->firstname }}">
-                        @error('firstname') {{ $message }} @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="">Achternaam:</label>
-                        <input type="text" name="lastname" class="form-control" id="" value="{{ $data->lastname }}">
-                        @error('lastname') {{ $message }} @enderror
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="">Voornaam:</label>
+                                <input type="text" class="form-control" name="firstname" id="" aria-describedby="emailHelp" value="{{ $data->firstname }}">
+                                @error('firstname') {{ $message }} @enderror
+                            </div>
+                            <div class="col">
+                                <label for="">Achternaam:</label>
+                                <input type="text" name="lastname" class="form-control" id="" value="{{ $data->lastname }}">
+                                @error('lastname') {{ $message }} @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Geslacht:</label>

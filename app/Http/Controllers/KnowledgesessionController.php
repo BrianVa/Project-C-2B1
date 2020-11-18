@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\KnowledgesessionModel;
+use App\SessionOrderModel;
 
 class KnowledgesessionController extends Controller
 {
@@ -12,9 +13,9 @@ class KnowledgesessionController extends Controller
         if(isset(Auth::user()->email))
         {
             $data = new KnowledgesessionModel();
-            $session = $data->getSessions();
+            $sessions = $data->getSessions();
             return view('KnowledgeSession/overview', [
-                'data' => $session
+                'data' => $sessions
             ]);
         }
         else{
@@ -69,5 +70,19 @@ class KnowledgesessionController extends Controller
         else {
             return redirect('/');
         }
+    }
+    function SignupSession(Request $request){
+
+        $session = new SessionOrderModel();
+        $data = $session->SetOrder($request->route('id'));
+
+        if($data){
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+    }
+    function CancelSession(Request $request){
+
     }
 }

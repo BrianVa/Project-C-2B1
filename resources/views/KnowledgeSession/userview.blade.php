@@ -29,8 +29,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <button type="button" class="btn btn-primary float-right">Aanmelden</button>
-
+                <a href="{{url('/signup')}}/{{$data->know_id}}"  class="btn btn-primary float-right"><b>Aanmelden</b></a>
             </div>
             <!-- /.card-footer-->
         </div>
