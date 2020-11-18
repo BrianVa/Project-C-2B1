@@ -57,5 +57,11 @@ class KnowledgesessionModel extends Model
             ->first();
 
     }
+    function getUsers(){
+        return DB::table('users')
+            ->select('users.firstname','users.lastname','users.id')
+            ->where('users.role_id','>',1)
+            ->get();
+    }
 
 }

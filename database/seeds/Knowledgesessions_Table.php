@@ -13,7 +13,7 @@ class Knowledgesessions_Table extends Seeder
      */
     public function run()
     {
-        for ($x = 1; $x <= 40; $x++) {
+        for ($x = 1; $x <= 20; $x++) {
             $date = new DateTime('+'.strval($x).' week');
             $date2 = new DateTime('+'.strval($x + 1).' week');
             DB::table('knowledgesessions')->insert([

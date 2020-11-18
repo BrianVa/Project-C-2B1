@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\KnowledgesessionModel;
 use App\SessionOrderModel;
 
+
 class KnowledgesessionController extends Controller
 {
     function KnowledgesessionView(){
@@ -26,9 +27,11 @@ class KnowledgesessionController extends Controller
     function addView(){
         if(isset(Auth::user()->email))
         {
-            $data = "1";
+            $data = new KnowledgesessionModel();
+            $gebruikers = $data->getUsers();
+            //print_r($gebruikers);
             return view('KnowledgeSession/add', [
-                'data' => $data
+                'gebruikers' => $gebruikers
             ]);
         }
         else{
@@ -37,18 +40,29 @@ class KnowledgesessionController extends Controller
     }
 
     function addSession(Request $request){
-
-        $this->validate($request, [
+        $rules = [
             "title" => "required",
             "desc" => "required",
             "min_aten" => "required|numeric",
             "max_aten" => "required|numeric|gte:min_aten",
             "begin_time" => "required",
-            "end_time" => "required"
-        ]);
+            "end_time" => "required|after:begin_time"
+        ];
+        if (Auth::user()->role_id > 1){
+            array_merge($rules, array(
+                $rules["Sessionleader"] = "required"
+            ));
+        }
+        $this->validate($request,$rules);
 
         $session = new KnowledgesessionModel();
-        $result = $session->insertsession($request,Auth::user()->id);
+        if (Auth::user()->role_id > 1) {
+            $result = $session->insertsession($request, intval($request->Sessionleader));
+
+        }
+        else {
+            $result = $session->insertsession($request, Auth::user()->id);
+        }
 
         if($result){
             return redirect()->back();
@@ -56,6 +70,7 @@ class KnowledgesessionController extends Controller
             return redirect()->back();
         }
     }
+
 
     function SessionUserView(Request $request){
 

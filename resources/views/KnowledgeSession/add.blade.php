@@ -64,7 +64,25 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="float-right btn btn-primary">Toevoegen</button>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-3">
+                                @if(Auth::user()->role_id > 1)
+                                    <select name="Sessionleader" class="form-control">
+                                        <option selected></option>
+                                        @foreach($gebruikers as $gebruiker)
+                                        <option value="{{$gebruiker->id}}">{{$gebruiker->firstname}} {{$gebruiker->lastname}}</option>
+                                            @endforeach
+                                    </select>
+                                @endif
+                            </div>
+                            <div class="col-3"></div>
+                            <div class="col-3"></div>
+                            <div class="col-3">
+                                <button type="submit" class="float-right btn btn-primary">Toevoegen</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
             <!-- /.card-body -->
