@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 class KnowledgesessionModel extends Model
 {
     protected $table = "knowledgesessions";
+
     function insertsession($request, $id){
         $data = array(
             "title" => $request->title,
@@ -78,7 +79,7 @@ class KnowledgesessionModel extends Model
 
         return DB::table($this->table)
             ->join('users', 'knowledgesessions.user_id','=','users.id')
-            ->select('knowledgesessions.id as know_id', 'knowledgesessions.*', 'users.*')
+            ->select('knowledgesessions.id as know_id', 'users.id as user_id', 'knowledgesessions.*', 'users.*')
             ->where('knowledgesessions.id', $id)
             ->first();
 
@@ -90,4 +91,26 @@ class KnowledgesessionModel extends Model
             ->get();
     }
 
+    function updatesession($request){
+        $data = array(
+            "title" => $request->title,
+            "desc" => $request->desc,
+            "min_atendees" => $request->min_aten,
+            "max_atendees" => $request->max_aten,
+            "begin_date" => new DateTime($request->begin_time),
+            "end_date" => new DateTime($request->end_time),
+            "user_id" => intval($request->Sessionleader)
+        );
+
+        $update = DB::table($this->table)
+            ->where('id', intval($request->knowid))
+            ->update($data);
+
+        if($update !== false){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
