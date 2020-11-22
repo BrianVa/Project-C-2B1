@@ -1,6 +1,10 @@
 <?php
 
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +32,7 @@ Route::get('/logout', 'MainController@logout');
 Route::get('/', 'MainController@LoginView');
 Route::get('/profiel', 'ProfileController@ProfileView');
 Route::post('/updatedata', 'ProfileController@UpdateUserData');
+
 
 //Knowledge sessions
 Route::get('/kennissessies', 'KnowledgesessionController@KnowledgesessionView');

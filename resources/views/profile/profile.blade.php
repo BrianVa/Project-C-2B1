@@ -64,6 +64,7 @@
 
                             <p class="text-muted">
                                 Lorem ipsum dolor sit amet, consectetur.
+
                             </p>
 
                             <hr>

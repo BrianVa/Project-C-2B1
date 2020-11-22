@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ url('/updatedata') }}">
+                <form method="post" action="{{ url('/updatedata') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-row">
@@ -61,6 +61,10 @@
                         <label for="">Herhaal nieuw wachtwoord:</label>
                         <input name="h_password" type="password" class="form-control" id="" placeholder="">
                         @error('h_password') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="">Profielfoto wijzigen:</label>
+                        <input type="file" name="image"/>
                     </div>
                     <button type="submit" class="float-right btn btn-primary">Aanpassen</button>
                     <button type="submit" data-dismiss="modal" class="float-left btn btn-secondary">Cancel</button>

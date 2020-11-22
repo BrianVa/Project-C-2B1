@@ -20,6 +20,11 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Kennissessies Overzicht</h3>
+                <form action="{{ url('/upload') }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <input type="file" name="image"/>
+                    <input type="submit" value="upload">
+                </form>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">

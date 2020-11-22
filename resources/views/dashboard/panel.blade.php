@@ -14,6 +14,7 @@
                     <button type="button" class="btn btn-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
                         <i class="fa fa-times"></i></button>
                 </div>
+
             </div>
             <div class="card-body">
                 plaats hier content!
