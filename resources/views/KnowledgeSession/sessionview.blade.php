@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <label>{{$data->begin_date}}</label>
+                                <label>Begin tijd:</label>
                                 <input id="datemask" type="datetime-local" name="begin_time" class="form-control" value="{{ date_format(new Datetime($data->begin_date),'Y-m-d\TH:i') }}">
                                 @error('begin_time') {{ $message }} @enderror
                             </div>
