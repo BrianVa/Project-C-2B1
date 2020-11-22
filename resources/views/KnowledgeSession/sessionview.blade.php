@@ -2,11 +2,7 @@
 @section('title', "Cimsolutions Kennissessie Aanpassen")
 @section('page_title', "Kennissessies Aanpassen")
 @section('jqcode')
-    <script>
-        $(document).ready(function(){
 
-        });
-    </script>
 @endsection
 @section('content')
 

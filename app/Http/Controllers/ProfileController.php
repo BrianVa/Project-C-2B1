@@ -43,7 +43,11 @@ class ProfileController extends Controller
                 $rules["email"] = "required|email|unique:users,email"
             ));
         }
-        $request->image->store('images','public');
+
+        if($request->image) {
+            $request->image->store('images', 'public');
+        }
+
         $this->validate($request, $rules);
 
         $profile = new ProfileModel();
