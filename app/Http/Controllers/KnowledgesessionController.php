@@ -113,4 +113,44 @@ class KnowledgesessionController extends Controller
             return redirect('/');
         }
     }
+
+    function SessionView(Request $request){
+        if(isset(Auth::user()->email))
+        {
+            $session = new KnowledgesessionModel();
+            $data = $session->getSessionDetails($request->route('id'));
+            $gebruikers = $session->getUsers();
+            return view('KnowledgeSession/sessionview', [
+                'data' => $data,
+                'gebruikers' => $gebruikers
+            ]);
+        }
+        else{
+            return redirect('/');
+        }
+    }
+
+    function updateSession(Request $request){
+
+
+        $rules = [
+            "title" => "required",
+            "desc" => "required",
+            "min_aten" => "required|numeric",
+            "max_aten" => "required|numeric|gte:min_aten",
+            "begin_time" => "required",
+            "end_time" => "required|after:begin_time",
+            "Sessionleader" => "required"
+        ];
+
+        $this->validate($request,$rules);
+        $session = new KnowledgesessionModel();
+        $result = $session->updatesession($request);
+
+        if($result){
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+    }
 }

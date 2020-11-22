@@ -39,6 +39,8 @@ Route::get('/kennissessies', 'KnowledgesessionController@KnowledgesessionView');
 Route::get('/kennissessies/toevoegen', 'KnowledgesessionController@addView');
 Route::post('/addingsession', 'KnowledgesessionController@addSession');
 Route::get('/kennissessie/{id}','KnowledgesessionController@SessionUserView');
+Route::get('/sessiebeheer/{id}','KnowledgesessionController@SessionView');
+Route::post('/updatesession', 'KnowledgesessionController@updateSession');
 Route::get('/signup/{id}','KnowledgesessionController@SignupSession');
 Route::get('/annuleer/{id}','KnowledgesessionController@CancelSession');
 

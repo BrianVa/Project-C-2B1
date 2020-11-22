@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ url('/css/dashboard/ionicons.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('/css/dashboard/adminlte.min.css') }}">
+    <!-- Datetime -->
+    <link rel="stylesheet" href="{{ url('/css/datetimepicker/date.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ url('/css/dashboard/google.css') }}">
 
@@ -241,12 +243,15 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 <!-- jQuery -->
-<script src="{{ url('/js/dashboard/jquery.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ url('/js/dashboard/bootstrap.bundle.min.js') }}"></script>
 <!-- SlimScroll -->
 <script src="{{ url('/js/dashboard/jquery.slimscroll.min.js') }}"></script>
+<!-- Datetime -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <!-- FastClick -->
 <script src="{{ url('/js/dashboard/fastclick.min.js') }}"></script>
 <!-- AdminLTE App -->
