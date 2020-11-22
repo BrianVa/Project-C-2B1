@@ -4,7 +4,7 @@
 @section('jqcode')
     <script>
         $(document).ready(function(){
-            //$('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+
         });
     </script>
 @endsection
@@ -53,14 +53,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <label>Begin tijd:</label>
-                                <input id="datemask" type="datetime-local" name="begin_time" class="form-control" value="{{ date_format(new Datetime($data->begin_date),'D j F Y G:i') }}">
+                                <label>{{$data->begin_date}}</label>
+                                <input id="datemask" type="datetime-local" name="begin_time" class="form-control" value="{{ date_format(new Datetime($data->begin_date),'Y-m-d\TH:i') }}">
                                 @error('begin_time') {{ $message }} @enderror
                             </div>
                             <div class="col">
                                 <label>Eind tijd:</label>
                                 <input hidden name="knowid" type="text" class="form-control" value="{{$data->know_id}}">
-                                <input type="datetime-local" name="end_time" class="form-control" value="{{ date_format(new Datetime($data->end_date),'D j F Y G:i') }}">
+                                <input type="datetime-local" name="end_time" class="form-control" value="{{ date_format(new Datetime($data->end_date),'Y-m-d\TH:i') }}">
                                 @error('end_time') {{ $message }} @enderror
                             </div>
                         </div>
