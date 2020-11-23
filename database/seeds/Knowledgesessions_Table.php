@@ -23,7 +23,7 @@ class Knowledgesessions_Table extends Seeder
                 'end_date' => $date2,
                 'max_atendees' => 20,
                 'min_atendees' => 5,
-                'user_id' => User::all()->random()->id,
+                'user_id' => User::all()->where('role_id','>',1)->random()->id,
                 'active' => true,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime()
