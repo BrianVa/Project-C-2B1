@@ -16,8 +16,9 @@ class MainModel extends Model
             "email" => $request->email,
             "dietary" => $request->diet,
             "password" => Hash::make(trim($request->password)),
-            "dateofbirth" => new DateTime($request->begin_time),
+            "dateofbirth" => new DateTime($request->dateofbirth),
             "sex_id" => $request->sex,
+            "role_id" => 1,
         );
 
         $insert = DB::table("users")->insert($data);
