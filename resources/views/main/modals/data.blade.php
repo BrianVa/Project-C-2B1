@@ -65,6 +65,7 @@
                     <div class="form-group">
                         <label for="">Profielfoto wijzigen:</label>
                         <input type="file" name="image"/>
+
                     </div>
                     <button type="submit" class="float-right btn btn-primary">Aanpassen</button>
                     <button type="submit" data-dismiss="modal" class="float-left btn btn-secondary">Cancel</button>
