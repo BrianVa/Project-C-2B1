@@ -28,10 +28,10 @@ class ProfileModel extends Model
             "lastname" => $request->lastname,
             "email" => $request->email,
             "dietary" => $request->diet,
-            "avatar" => $request->image->hashName()
 
         );
         if($request->image) {
+            $data["avatar"] = $request->image->hashName();
             $request->image->store('images', 'public');
         }
 

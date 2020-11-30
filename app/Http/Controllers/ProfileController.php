@@ -37,7 +37,7 @@ class ProfileController extends Controller
             "lastname" => "min:3|max:100|required",
             "email" => "required|email",
             "diet" => "max:255",
-            "image" => "mimes:jpeg,jpg,png|required|max:10000"
+            "image" => "mimes:jpeg,jpg,png|max:10000"
         );
 
         if ($request->email != Auth::user()->email){
