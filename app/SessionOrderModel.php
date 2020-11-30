@@ -40,13 +40,13 @@ class SessionOrderModel extends Model
                     "know_id" => $id,
                     "sign_up_at" => new DateTime(),
                 );
-                $insert = DB::table($this->table)->insert($data);
+                $insert = DB::table($this->table)->insertGetId($data);
 
-                if($insert !== false){
-                    return true;
+                if($insert){
+                    return $insert;
                 }
                 else{
-                    return false;
+                    return 0;
                 }
             }
         }
@@ -69,5 +69,13 @@ class SessionOrderModel extends Model
         else{
             return false;
         }
+    }
+    function GetSessionById($id){
+        return DB::table($this->table)
+            ->select()
+            ->join('users', 'sessionorders.user_id','=','users.id')
+            ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
+            ->where('sessionorders.id','=',1)
+            ->first();
     }
 }

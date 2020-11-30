@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\MainModel;
 use App\Rules\CimsolutionEmail;
 use App\SexModel;
+use App\Mail\RegMail;
+use Illuminate\support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -86,6 +88,7 @@ class MainController extends Controller
         $result = $session->insertuser($request);
 
         if($result){
+            \Mail::to('0952635@hr.nl')->send(new RegMail($request));
             return redirect()->back();
         }else{
             return redirect()->back();

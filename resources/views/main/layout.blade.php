@@ -250,6 +250,8 @@
 <script src="{{ url('/js/dashboard/bootstrap.bundle.min.js') }}"></script>
 <!-- SlimScroll -->
 <script src="{{ url('/js/dashboard/jquery.slimscroll.min.js') }}"></script>
+<!-- Functions -->
+<script src="{{ url('/js/dashboard/functions.js') }}"></script>
 <!-- Datetime -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <!-- FastClick -->
@@ -259,6 +261,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('/js/dashboard/extra.js') }}"></script>
 @section('includes_js')
+
 
 @show
 @section('jqcode')

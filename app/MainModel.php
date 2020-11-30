@@ -18,7 +18,7 @@ class MainModel extends Model
             "password" => Hash::make(trim($request->password)),
             "dateofbirth" => new DateTime($request->dateofbirth),
             "sex_id" => $request->sex,
-            "role_id" => 1,
+            "role_id" => 1
         );
 
         $insert = DB::table("users")->insert($data);

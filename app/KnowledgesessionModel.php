@@ -74,7 +74,13 @@ class KnowledgesessionModel extends Model
         }
         return $sessions;
     }
-
+    function getSessionUsers($id){
+        return DB::table('sessionorders')
+            ->join('users', 'sessionorders.user_id','=','users.id')
+            ->select('sessionorders.id as ses_id', 'users.id as user_id', 'sessionorders.*', 'users.*')
+            ->where('sessionorders.know_id', $id)
+            ->get();
+    }
     function getSessionDetails($id){
 
         return DB::table($this->table)
