@@ -28,8 +28,12 @@ class ProfileModel extends Model
             "lastname" => $request->lastname,
             "email" => $request->email,
             "dietary" => $request->diet,
+            "avatar" => $request->image->hashName()
 
         );
+        if($request->image) {
+            $request->image->store('images', 'public');
+        }
 
         if($request->password){
             array_merge($data, array(

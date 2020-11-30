@@ -22,6 +22,7 @@ class UsersTable extends Migration
             $table->string('lastname', '255');
             $table->dateTime('dateofbirth');
             $table->string('dietary','255')->nullable();
+            $table->string('avatar')->default('profile.png');
 
             $table->index('role_id');
             $table->integer('role_id')->unsigned();

@@ -24,6 +24,7 @@ Route::post('/updategebruiker', 'EmployeeController@UpdateEmployee');
 
 //Medewerker
 Route::get('/dashboard', 'MainController@DashboardView');
+//Route::get('profile', 'UserController@profile');
 
 //General
 Route::post('/loggingin', 'MainController@checklogin');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\ProfileModel;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,8 @@ class ProfileController extends Controller
             "firstname" => "min:3|max:100|required",
             "lastname" => "min:3|max:100|required",
             "email" => "required|email",
-            "diet" => "max:255"
+            "diet" => "max:255",
+            "image" => "mimes:jpeg,jpg,png|required|max:10000"
         );
 
         if ($request->email != Auth::user()->email){
@@ -44,9 +46,8 @@ class ProfileController extends Controller
             ));
         }
 
-        if($request->image) {
-            $request->image->store('images', 'public');
-        }
+
+
 
         $this->validate($request, $rules);
 

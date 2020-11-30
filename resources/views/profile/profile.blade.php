@@ -25,12 +25,14 @@
                 <div class="col-md-3">
 
                     <!-- Profile Image -->
+
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle"
-                                     src="{{ url('/img/user2-160x160.jpg') }}"
+                                <img style="width: 160px!important;height: 160px!important;" class="profile-user-img img-fluid img-circle"
+                                     src="{{ url('/img/profile/images') }}/{{Auth::user()->avatar}}"
                                      alt="User profile picture">
+
                             </div>
                             <h3 class="profile-username text-center">{{ Auth::user()->firstname  }} {{ Auth::user()->lastname  }}</h3>
                             <a href="#" data-toggle="modal" data-target="#data" class="btn btn-primary btn-block"><b>Gegevens wijzigen</b></a>
