@@ -65,6 +65,7 @@
                     <div class="form-group">
                         <label for="">Profielfoto wijzigen:</label>
                         <input type="file" name="image"/>
+                        @error('image') {{ $message }} @enderror
 
                     </div>
                     <button type="submit" class="float-right btn btn-primary">Aanpassen</button>
