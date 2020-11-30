@@ -96,7 +96,7 @@ class KnowledgesessionController extends Controller
         $data = $session->SetOrder($request->route('id'));
 
         if($data > 0){
-            \Mail::to('brianvaartjes@gmail.com')->send(new SignUpSession($session->GetSessionById($request->route($data))));
+           // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
             return redirect()->back();
         }else{
             return redirect()->back();
@@ -110,7 +110,7 @@ class KnowledgesessionController extends Controller
 
             if($data){
                 $d = $session->GetSessionById($request->route('id'));
-                \Mail::to('brianvaartjes@gmail.com')->send(new CancelSession($d));
+               // \Mail::to('0952635@hr.nl')->send(new CancelSession($d));
                 return redirect()->back();
             }else{
                 return redirect()->back();

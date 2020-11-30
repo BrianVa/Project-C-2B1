@@ -88,7 +88,7 @@ class MainController extends Controller
         $result = $session->insertuser($request);
 
         if($result){
-            \Mail::to('0952635@hr.nl')->send(new RegMail($request));
+           // \Mail::to('0952635@hr.nl')->send(new RegMail($request));
             return redirect()->back();
         }else{
             return redirect()->back();
