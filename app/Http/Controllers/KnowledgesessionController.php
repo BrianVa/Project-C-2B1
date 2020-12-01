@@ -60,7 +60,6 @@ class KnowledgesessionController extends Controller
         $session = new KnowledgesessionModel();
         if (Auth::user()->role_id > 1) {
             $result = $session->insertsession($request, intval($request->Sessionleader));
-
         }
         else {
             $result = $session->insertsession($request, Auth::user()->id);
@@ -81,6 +80,8 @@ class KnowledgesessionController extends Controller
             $session = new KnowledgesessionModel();
             $data = $session->getSessionDetails($request->route('id'));
             $users = $session->getSessionUsers($request->route('id'));
+            $data->checked = $session->checkOrder($request->route('id'));
+
             return view('KnowledgeSession/userview', [
                 'data' => $data,
                 'users' => $users
@@ -115,7 +116,6 @@ class KnowledgesessionController extends Controller
             }else{
                 return redirect()->back();
             }
-
         }
         else {
             return redirect('/');

@@ -17,7 +17,8 @@ class SessionOrderModel extends Model
         ->select()
         ->where([
             ['user_id', '=',Auth::user()->id],
-            ['know_id', '=',$id]
+            ['know_id', '=',$id],
+            ['cancelled', '=',0]
         ])
         ->exists();
         if ($session == false) {

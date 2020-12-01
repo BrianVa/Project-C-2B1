@@ -62,12 +62,14 @@ class KnowledgesessionModel extends Model
             }
         }
         else{
-            foreach ($orders as $order) {
-                foreach ($sessions as $session) {
-                    if ($order->know_id == $session->k_id) {
+            foreach ($sessions as $session){
+                foreach ($orders as $order){
+                    if ($session->k_id == $order->know_id) {
                         $session->orders = $order->orders;
                     } else {
-                        $session->orders = 0;
+                       if(isset($session->orders) < 1){
+                           $session->orders = 0;
+                       }
                     }
                 }
             }
@@ -117,6 +119,21 @@ class KnowledgesessionModel extends Model
         }
         else{
             return false;
+        }
+    }
+    function checkOrder($id){
+        $order = DB::table('sessionorders')
+            ->select('sessionorders.id')
+            ->where([
+                ['sessionorders.know_id','=' ,$id],
+                ['sessionorders.user_id','=' ,Auth::user()->id],
+                ['sessionorders.cancelled','=' ,0]
+            ])
+            ->get();
+        if ($order->isEmpty()) {
+            return 0;
+        }else{
+            return 1;
         }
     }
 }

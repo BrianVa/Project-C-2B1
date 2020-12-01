@@ -22,7 +22,6 @@
             <div class="card-header">
                 <h2>{{$data->title}}</h2>
                 <h3 class="card-title">{{$data->firstname}} {{$data->lastname}}</h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>
@@ -35,7 +34,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <a href="{{url('/signup')}}/{{$data->know_id}}"  class="btn btn-primary float-right"><b>Aanmelden</b></a>
+                <a href="{{url('/signup')}}/{{$data->know_id}}" @if($data->checked) class="btn btn-primary float-right disabled" @else class="btn btn-primary float-right" @endif ><b>Aanmelden</b></a>
             </div>
             <!-- /.card-footer-->
         </div>
