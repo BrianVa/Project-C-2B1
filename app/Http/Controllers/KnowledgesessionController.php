@@ -107,11 +107,8 @@ class KnowledgesessionController extends Controller
         if(isset(Auth::user()->email))
         {
             $session = new SessionOrderModel();
-            $data = $session->CancelSession($request->route('id'));
-
-            if($data){
-                $d = $session->GetSessionById($request->route('id'));
-               // \Mail::to('0952635@hr.nl')->send(new CancelSession($d));
+            if($session->CancelSession($request->route('id'))){
+               // \Mail::to('0952635@hr.nl')->send(new CancelSession($session->GetSessionById($request->route('id'))));
                 return redirect()->back();
             }else{
                 return redirect()->back();
@@ -126,11 +123,9 @@ class KnowledgesessionController extends Controller
         if(isset(Auth::user()->email))
         {
             $session = new KnowledgesessionModel();
-            $data = $session->getSessionDetails($request->route('id'));
-            $gebruikers = $session->getUsers();
             return view('KnowledgeSession/sessionview', [
-                'data' => $data,
-                'gebruikers' => $gebruikers
+                'data' => $session->getSessionDetails($request->route('id')),
+                'gebruikers' => $session->getUsers()
             ]);
         }
         else{
@@ -155,6 +150,16 @@ class KnowledgesessionController extends Controller
         $result = $session->updatesession($request);
 
         if($result){
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+    }
+    function anusession(Request $request){
+        $session = new SessionOrderModel();
+        if($session->anuSession($request->route('know_id'), $request->route('user_id'))){
+//doesnt work need to fix the id!!!!!!
+            // \Mail::to('0952635@hr.nl')->send(new CancelledByFac($session->GetSessionById($request->route('id'))));
             return redirect()->back();
         }else{
             return redirect()->back();

@@ -79,4 +79,19 @@ class SessionOrderModel extends Model
             ->where('sessionorders.id','=',1)
             ->first();
     }
+    function anuSession($know_id, $user_id){
+        $update = DB::table($this->table)
+            ->where([
+                ["know_id", "=", $know_id],
+                ["user_id", "=", $user_id]
+            ])
+            ->update(["cancelled" => 1]);
+
+        if($update !== false){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

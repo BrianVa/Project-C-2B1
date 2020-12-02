@@ -4,8 +4,15 @@
 @section('jqcode')
     <script>
         $(document).ready( function () {
-            $('#SessionUsersOverview').DataTable();
-        } );
+            $('#SessionUsersOverview').DataTable( {
+                "order": [[ 2, "asc" ]]
+            });
+        });
+    </script>
+    <script>
+        function setdiet($param) {
+            $("#diet_textfield").text($param);
+        }
     </script>
 @endsection
 @section('includes_css')
@@ -20,8 +27,8 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h2>{{$data->title}}</h2>
-                <h3 class="card-title">{{$data->firstname}} {{$data->lastname}}</h3>
+                <h2>{{  $data->title }}</h2>
+                <h3 class="card-title">{{ $data->firstname }} {{ $data->lastname }}</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>
@@ -30,18 +37,18 @@
                 </div>
             </div>
             <div class="card-body">
-               <p>{{$data->desc}}  </p>
+               <p>{{ $data->desc }}</p>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <a href="{{url('/signup')}}/{{$data->know_id}}" @if($data->checked) class="btn btn-primary float-right disabled" @else class="btn btn-primary float-right" @endif ><b>Aanmelden</b></a>
+                <a href="{{url('/signup')}}/{{ $data->know_id }}" @if($data->checked) class="btn btn-primary float-right disabled" @else class="btn btn-primary float-right" @endif ><b>Aanmelden</b></a>
             </div>
             <!-- /.card-footer-->
         </div>
         @if(Auth::user()->role_id > 2)
         <div class="card">
             <div class="card-header">
-                <h2>Deelneemers</h2>
+                <h2>Aanmeldingen</h2>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>
@@ -50,7 +57,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table id="SessionUsersOverview" class="display">
+                <table id="SessionUsersOverview" class="display dt-body-center dt-head-center">
                     <thead>
                     <tr>
                         <th>Naam</th>
@@ -58,7 +65,6 @@
                         <th>Status</th>
                         <th>dieetwensen</th>
                         <th>Afwijzen</th>
-                        <th>Verwijderen</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -67,9 +73,8 @@
                             <td>{{ $user->firstname }} {{ $user->lastname }}</td>
                             <td>{{ $user->sign_up_at }}</td>
                             <td>{{ $user->cancelled ? 'Geannuleerd' : 'Aangemeld' }}</td>
-                            <td><button type="button" class="btn btn-info">Bekijken</button></td>
-                            <td><button type="button" class="btn btn-warning">Afwijzen</button></td>
-                            <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
+                            <td><button onclick="setdiet('{{$user->dietary}}')" data-toggle="modal" data-target="#diet" type="button"  class="btn btn-info @if($user->dietary == '') disabled @endif">Bekijken</button></td>
+                            <td><a href="{{url('/annuleer/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$user->id}}"  class="btn btn-warning btn-block @if($user->cancelled == 1) disabled @endif">Afwijzen</a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -82,6 +87,7 @@
             <!-- /.card-footer-->
         </div>
         @endif
+        @extends('main/modals/diet')
         <!-- /.card -->
     </section>
 @endsection
