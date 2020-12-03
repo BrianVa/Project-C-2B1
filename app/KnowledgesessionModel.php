@@ -136,4 +136,15 @@ class KnowledgesessionModel extends Model
             return 1;
         }
     }
+    function DeleteSession($k_id){
+        DB::table('sessionorders')->where('know_id', '=', $k_id)->delete();
+        $result = DB::table('knowledgesessions')->where('id', '=', $k_id)->delete();
+
+        if($result){
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+    }
+
 }

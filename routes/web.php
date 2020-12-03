@@ -30,7 +30,7 @@ Route::post('/updatesession', 'KnowledgesessionController@updateSession')->middl
 Route::get('/annuleer/kennissesie/{know_id}/gebruiker/{user_id}', 'KnowledgesessionController@anusession')->middleware('auth','facilitator');
 Route::get('/signup/{id}','KnowledgesessionController@SignupSession')->middleware('auth', 'employee');
 Route::get('/annuleer/{id}','KnowledgesessionController@CancelSession')->middleware('auth', 'employee');
-
+Route::get('/delete/{id}', 'KnowledgesessionController@DeleteSession')->middleware('auth', 'facilitator');
 
 
 

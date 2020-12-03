@@ -60,7 +60,7 @@
                     @endif
                     <td> <a href="{{url('/kennissessie')}}/{{ $session->k_id }}"  class="btn btn-primary btn-block"><b>Bekijken</b></a></td>
                     @if(Auth::user()->role_id > 1)
-                        <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
+                        <td><a href="{{url('/delete')}}/{{ $session->k_id }}" class="btn btn-danger btn-block"><b>verwijderen</b></a></td>
                     @endif
                 </tr>
                 @endforeach

@@ -165,4 +165,25 @@ class KnowledgesessionController extends Controller
             return redirect()->back();
         }
     }
+
+    function DeleteSession(Request $request){
+        if(isset(Auth::user()->email))
+        {
+            $session = new KnowledgesessionModel();
+            $data = $session->DeleteSession($request->route('id'));
+
+
+            if($data){
+            //    $d = $session->DeleteSession($request->route('id'));
+                // \Mail::to('0952635@hr.nl')->send(new CancelSession($d));
+                return redirect()->back();
+            }else{
+                return redirect()->back();
+            }
+        }
+        else {
+            return redirect('/');
+        }
+    }
+
 }
