@@ -155,18 +155,20 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ url('/gebruikers') }}" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Gebruikers Overzicht</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Gebruikers Toevoegen</p>
-                                    </a>
-                                </li>
+                                @if(Auth::user()->role_id > 2)
+                                    <li class="nav-item">
+                                        <a href="{{ url('/gebruikers') }}" class="nav-link">
+                                            <i class="fa fa-circle-o nav-icon"></i>
+                                            <p>Gebruikers Overzicht</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="fa fa-circle-o nav-icon"></i>
+                                            <p>Gebruikers Toevoegen</p>
+                                        </a>
+                                    </li>
+                                @endif
                                 <li class="nav-item">
                                     <a href="{{ url('/kennissessies') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>

@@ -45,7 +45,7 @@
             </div>
             <!-- /.card-footer-->
         </div>
-        @if(Auth::user()->role_id > 2)
+        @if(Auth::user()->role_id > 1)
         <div class="card">
             <div class="card-header">
                 <h2>Aanmeldingen</h2>
