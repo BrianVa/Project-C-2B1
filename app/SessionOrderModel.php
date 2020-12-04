@@ -113,19 +113,23 @@ class SessionOrderModel extends Model
     }
 
     function GetApplicants($id){
-        /*$possibleusers = DB::table($this->table)
+
+        $test = array_map(function ($value) {
+            return (array)$value;
+        }, DB::table($this->table)
             ->select('user_id')
             ->where('know_id','=', $id)
             ->get()
-            ->toArray();*/
-        $user = DB::table('users')
+            ->toArray());
+
+        $users = DB::table('users')
             ->join('roles', 'users.role_id','=','roles.id')
             ->join('sex', 'users.sex_id','=','sex.id')
             ->select('sex.name as gender', 'roles.name as function', 'users.*')
-            //->whereNotIn('users.id', $possibleusers)
+            ->whereNotIn('users.id', $test)
             ->get();
-        //dd($user);
-        return $user;
+
+        return $users;
     }
 
     function AddAttendee($know_id, $id){
