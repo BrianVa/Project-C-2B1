@@ -14,6 +14,11 @@
             $("#diet_textfield").text($param);
         }
     </script>
+    <script>
+        $(document).ready( function () {
+            $('#EmployeeOverview').DataTable();
+        } );
+    </script>
 @endsection
 @section('includes_css')
     <link rel="stylesheet" href="{{ url('/css/datatables/datatable.css') }}">
@@ -65,6 +70,7 @@
                         <th>Status</th>
                         <th>dieetwensen</th>
                         <th>Afwijzen</th>
+                        <th>Verwijderen</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,6 +81,7 @@
                             <td>{{ $user->cancelled ? 'Geannuleerd' : 'Aangemeld' }}</td>
                             <td><button onclick="setdiet('{{$user->dietary}}')" data-toggle="modal" data-target="#diet" type="button"  class="btn btn-info @if($user->dietary == '') disabled @endif">Bekijken</button></td>
                             <td><a href="{{url('/annuleer/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$user->id}}"  class="btn btn-warning btn-block @if($user->cancelled == 1) disabled @endif">Afwijzen</a></td>
+                            <td><a href="{{url('/verwijder/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$user->id}}" class="btn btn-danger btn-block @if($user->cancelled == 0) disabled @endif">Verwijderen</a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -86,6 +93,50 @@
             </div>
             <!-- /.card-footer-->
         </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Deelnemers toevoegen</h2>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="EmployeeOverview" class="display dt-body-center dt-head-center">
+                        <thead>
+                        <tr>
+                            <th>Naam</th>
+                            <th>Email</th>
+                            <th>Geboorte Datum</th>
+                            <th>Geslacht</th>
+                            <th>Role</th>
+                            <th>Actief</th>
+                            <th>Toevoegen</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($applicants as $applicant)
+                            <tr>
+                                <td>{{ $applicant->firstname }}  {{ $applicant->lastname }}</td>
+                                <td>{{ $applicant->email }}</td>
+                                <td>{{ date_format(new Datetime($applicant->dateofbirth),'d/m/Y') }}</td>
+                                <td>{{ $applicant->gender }}</td>
+                                <td>{{ $applicant->function }}</td>
+                                <td>{{ $applicant->active ? 'Actief' : 'Inactief' }}</td>
+                                <td> <a href="{{url('/addattendee/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$applicant->id}}"  class="btn btn-success btn-block"><b>Toevoegen</b></a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+
+                </div>
+                <!-- /.card-footer-->
+            </div>
         @endif
         @extends('main/modals/diet')
         <!-- /.card -->

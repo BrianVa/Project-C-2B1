@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\EmployeeModel;
 use App\Mail\CancelSession;
 use App\Mail\SignUpSession;
 use Illuminate\Http\Request;
@@ -78,19 +79,23 @@ class KnowledgesessionController extends Controller
         if(isset(Auth::user()->email))
         {
             $session = new KnowledgesessionModel();
+            $applicant = new SessionOrderModel();
             $data = $session->getSessionDetails($request->route('id'));
             $users = $session->getSessionUsers($request->route('id'));
+            $applicants = $applicant->GetApplicants($request->route('id'));
             $data->checked = $session->checkOrder($request->route('id'));
 
             return view('KnowledgeSession/userview', [
                 'data' => $data,
-                'users' => $users
+                'users' => $users,
+                'applicants' => $applicants
             ]);
         }
         else {
             return redirect('/');
         }
     }
+
     function SignupSession(Request $request){
 
         $session = new SessionOrderModel();
@@ -183,6 +188,28 @@ class KnowledgesessionController extends Controller
         }
         else {
             return redirect('/');
+        }
+    }
+
+    function removeAttendee(Request $request){
+        $session = new SessionOrderModel();
+        if($session->RemoveAttendee($request->route('know_id'), $request->route('user_id'))){
+
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+    }
+
+    function addAttendee(Request $request){
+        $session = new SessionOrderModel();
+        $data = $session->AddAttendee($request->route('know_id'), $request->route('id'));
+
+        if($data > 0){
+            // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
+            return redirect()->back();
+        }else{
+            return redirect()->back();
         }
     }
 
