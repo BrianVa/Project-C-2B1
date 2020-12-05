@@ -22,6 +22,7 @@ Route::get('/', 'MainController@LoginView');
 
 //Knowledgesessions
 Route::get('/kennissessies', 'KnowledgesessionController@KnowledgesessionView')->middleware('auth', 'employee');
+Route::get('/kennissessies/beheer', 'KnowledgesessionController@KnowledgesessionBeheer')->middleware('auth', 'facilitator');
 Route::get('/kennissessies/toevoegen', 'KnowledgesessionController@addView')->middleware('auth', 'facilitator');
 Route::post('/addingsession', 'KnowledgesessionController@addSession')->middleware('auth', 'facilitator');
 Route::get('/kennissessie/{id}','KnowledgesessionController@SessionUserView')->middleware('auth', 'employee');

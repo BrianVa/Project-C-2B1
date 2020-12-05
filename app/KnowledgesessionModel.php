@@ -32,7 +32,7 @@ class KnowledgesessionModel extends Model
             return false;
         }
     }
-    function GetSessions(){
+    function getFacSessions(){
         $now = new DateTime();
         $select = [
             ['knowledgesessions.begin_date','>=', $now],
@@ -46,6 +46,45 @@ class KnowledgesessionModel extends Model
             ->select(array('knowledgesessions.id as k_id', 'users.id as u_id', 'knowledgesessions.*', 'users.*'))
             ->Leftjoin('users', 'knowledgesessions.user_id','=','users.id')
             ->where($select)
+            ->groupBy('knowledgesessions.id')
+            ->orderBy('knowledgesessions.begin_date', 'asc')
+            ->get();
+
+        $orders = DB::table('sessionorders')
+            ->select(array('sessionorders.know_id',DB::raw('COUNT(sessionorders.id) as orders')))
+            ->where('sessionorders.cancelled','=',0)
+            ->groupBy('sessionorders.know_id')
+            ->get();
+
+        if ($orders->isEmpty()) {
+            foreach ($sessions as $session){
+                $session->orders = 0;
+            }
+        }
+        else{
+            foreach ($sessions as $session){
+                foreach ($orders as $order){
+                    if ($session->k_id == $order->know_id) {
+                        $session->orders = $order->orders;
+                    } else {
+                        if(isset($session->orders) < 1){
+                            $session->orders = 0;
+                        }
+                    }
+                }
+            }
+        }
+        return $sessions;
+    }
+
+    function GetSessions(){
+
+        $sessions = DB::table($this->table)
+            ->select(array('knowledgesessions.id as k_id', 'users.id as u_id', 'knowledgesessions.*', 'users.*'))
+            ->Leftjoin('users', 'knowledgesessions.user_id','=','users.id')
+            ->where([
+                ['knowledgesessions.begin_date','>=', new DateTime()]
+            ])
             ->groupBy('knowledgesessions.id')
             ->orderBy('knowledgesessions.begin_date', 'asc')
             ->get();

@@ -19,6 +19,19 @@ class KnowledgesessionController extends Controller
         {
             $data = new KnowledgesessionModel();
             $sessions = $data->getSessions();
+            return view('KnowledgeSession/publicoverview', [
+                'data' => $sessions
+            ]);
+        }
+        else{
+            return redirect('/');
+        }
+    }
+    function KnowledgesessionBeheer(){
+        if(isset(Auth::user()->email))
+        {
+            $data = new KnowledgesessionModel();
+            $sessions = $data->getFacSessions();
             return view('KnowledgeSession/overview', [
                 'data' => $sessions
             ]);
@@ -27,6 +40,7 @@ class KnowledgesessionController extends Controller
             return redirect('/');
         }
     }
+
 
     function addView(){
         if(isset(Auth::user()->email))

@@ -170,7 +170,7 @@
                                     </li>
                                 @endif
                                 <li class="nav-item">
-                                    <a href="{{ url('/kennissessies') }}" class="nav-link">
+                                    <a href="{{ url('/kennissessies/beheer') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
                                         <p>Kennissessies Overzicht</p>
                                     </a>
