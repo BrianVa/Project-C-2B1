@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-3">
-                                @if(Auth::user()->role_id > 1)
+                                @if(Auth::user()->role_id == 4)
                                     <select name="Sessionleader" class="form-control">
                                         <option selected></option>
                                         @foreach($gebruikers as $gebruiker)

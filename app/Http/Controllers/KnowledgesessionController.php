@@ -65,7 +65,7 @@ class KnowledgesessionController extends Controller
             "begin_time" => "required",
             "end_time" => "required|after:begin_time"
         ];
-        if (Auth::user()->role_id > 1){
+        if (Auth::user()->role_id == 4){
             array_merge($rules, array(
                 $rules["Sessionleader"] = "required"
             ));
