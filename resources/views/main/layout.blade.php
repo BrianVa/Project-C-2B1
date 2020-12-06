@@ -21,9 +21,25 @@
     @section('includes_css')
 
     @show
-
+    <style>
+        .msg{
+            position: absolute!important;
+            top: 0!important;
+            right: 0!important;
+            z-index: 9999!important;
+            margin-top: 3%!important;
+            max-width: 500px!important;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
+@if(session()->has('succesMessage'))
+    <div class="alert alert-success msg alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fa fa-check"></i> Succes!</h5>
+        {{session()->get('succesMessage')}}
+    </div>
+@endif
 <!-- Site wrapper -->
 <div class="wrapper">
     <!-- Navbar -->
@@ -269,5 +285,6 @@
 @section('jqcode')
 
 @show
+
 </body>
 </html>

@@ -81,7 +81,7 @@ class KnowledgesessionController extends Controller
         }
 
         if($result){
-            return redirect()->back();
+            return redirect()->back()->with('succesMessage', 'Je hebt een kennissessie aangemaakt!');
         }else{
             return redirect()->back();
         }
@@ -117,7 +117,7 @@ class KnowledgesessionController extends Controller
 
         if($data > 0){
            // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
-            return redirect()->back();
+            return redirect()->back()->with('succesMessage', 'Je bent aangemeld voor deze kennissessie!');
         }else{
             return redirect()->back();
         }
@@ -128,7 +128,7 @@ class KnowledgesessionController extends Controller
             $session = new SessionOrderModel();
             if($session->CancelSession($request->route('id'))){
                // \Mail::to('0952635@hr.nl')->send(new CancelSession($session->GetSessionById($request->route('id'))));
-                return redirect()->back();
+                return redirect()->back()->with('succesMessage', 'Je bent afgemeld voor deze kennissessie!');
             }else{
                 return redirect()->back();
             }
@@ -169,7 +169,7 @@ class KnowledgesessionController extends Controller
         $result = $session->updatesession($request);
 
         if($result){
-            return redirect()->back();
+            return redirect()->back()->with('succesMessage', 'Je hebt de kennissessie aangepast');
         }else{
             return redirect()->back();
         }
@@ -195,7 +195,7 @@ class KnowledgesessionController extends Controller
             if($data){
             //    $d = $session->DeleteSession($request->route('id'));
                 // \Mail::to('0952635@hr.nl')->send(new CancelSession($d));
-                return redirect()->back();
+                return redirect()->back()->with('succesMessage', 'Je hebt een kennissessie verwijderd!');
             }else{
                 return redirect()->back();
             }
@@ -209,7 +209,7 @@ class KnowledgesessionController extends Controller
         $session = new SessionOrderModel();
         if($session->RemoveAttendee($request->route('know_id'), $request->route('user_id'))){
 
-            return redirect()->back();
+            return redirect()->back()->with('succesMessage', 'Je hebt een deelnemer verwijderd');
         }else{
             return redirect()->back();
         }
@@ -221,7 +221,7 @@ class KnowledgesessionController extends Controller
 
         if($data > 0){
             // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
-            return redirect()->back();
+            return redirect()->back()->with('succesMessage', 'Je hebt een deelnemer toegevoegd');
         }else{
             return redirect()->back();
         }

@@ -54,7 +54,7 @@ class ProfileController extends Controller
         $result = $profile->updateuser($request,Auth::user()->id);
 
         if($result){
-            return redirect()->back();
+            return redirect()->back()->with('succesMessage', 'De gegevens zijn aangepast.');
         }else{
             return redirect()->back();
         }
