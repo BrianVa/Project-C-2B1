@@ -56,7 +56,7 @@ class ProfileController extends Controller
         if($result){
             return redirect()->back()->with('succesMessage', 'De gegevens zijn aangepast.');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
 }

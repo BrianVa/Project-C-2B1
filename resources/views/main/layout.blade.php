@@ -40,6 +40,13 @@
         {{session()->get('succesMessage')}}
     </div>
 @endif
+@if(session()->has('errorMessage'))
+    <div class="alert alert-success msg alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fa fa-check"></i> Succes!</h5>
+        {{session()->get('errorMessage')}}
+    </div>
+@endif
 <!-- Site wrapper -->
 <div class="wrapper">
     <!-- Navbar -->

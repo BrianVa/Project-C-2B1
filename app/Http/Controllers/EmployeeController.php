@@ -56,9 +56,9 @@ class EmployeeController extends Controller
         $result = $Employee->updateuser($request, intval($request->userid));
 
         if($result){
-            return redirect()->back();
+            return redirect()->back()->with('succesMessage', 'De gegevens zijn aangepast.');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
 }

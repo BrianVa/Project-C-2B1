@@ -60,8 +60,8 @@ class KnowledgesessionController extends Controller
         $rules = [
             "title" => "required",
             "desc" => "required",
-            "min_aten" => "required|numeric",
-            "max_aten" => "required|numeric|gte:min_aten",
+            "min_aten" => "required|numeric|min:1",
+            "max_aten" => "required|numeric|gte:min_aten|max:500",
             "begin_time" => "required",
             "end_time" => "required|after:begin_time"
         ];
@@ -83,7 +83,7 @@ class KnowledgesessionController extends Controller
         if($result){
             return redirect()->back()->with('succesMessage', 'Je hebt een kennissessie aangemaakt!');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
 
@@ -119,7 +119,7 @@ class KnowledgesessionController extends Controller
            // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
             return redirect()->back()->with('succesMessage', 'Je bent aangemeld voor deze kennissessie!');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
     function CancelSession(Request $request){
@@ -130,7 +130,7 @@ class KnowledgesessionController extends Controller
                // \Mail::to('0952635@hr.nl')->send(new CancelSession($session->GetSessionById($request->route('id'))));
                 return redirect()->back()->with('succesMessage', 'Je bent afgemeld voor deze kennissessie!');
             }else{
-                return redirect()->back();
+                return redirect()->back()->with('errorMessage', 'er ging iets fout');
             }
         }
         else {
@@ -171,7 +171,7 @@ class KnowledgesessionController extends Controller
         if($result){
             return redirect()->back()->with('succesMessage', 'Je hebt de kennissessie aangepast');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
     function anusession(Request $request){
@@ -179,9 +179,9 @@ class KnowledgesessionController extends Controller
         if($session->anuSession($request->route('know_id'), $request->route('user_id'))){
 //doesnt work need to fix the id!!!!!!
             // \Mail::to('0952635@hr.nl')->send(new CancelledByFac($session->GetSessionById($request->route('id'))));
-            return redirect()->back();
+            return redirect()->back()->with('succesMessage', 'Je hebt de kennissessie geannuleerd');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
 
@@ -197,7 +197,7 @@ class KnowledgesessionController extends Controller
                 // \Mail::to('0952635@hr.nl')->send(new CancelSession($d));
                 return redirect()->back()->with('succesMessage', 'Je hebt een kennissessie verwijderd!');
             }else{
-                return redirect()->back();
+                return redirect()->back()->with('errorMessage', 'er ging iets fout');
             }
         }
         else {
@@ -211,7 +211,7 @@ class KnowledgesessionController extends Controller
 
             return redirect()->back()->with('succesMessage', 'Je hebt een deelnemer verwijderd');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
 
@@ -223,7 +223,7 @@ class KnowledgesessionController extends Controller
             // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
             return redirect()->back()->with('succesMessage', 'Je hebt een deelnemer toegevoegd');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
 
