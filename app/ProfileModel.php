@@ -4,7 +4,9 @@ namespace App;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileModel extends Model
@@ -31,6 +33,12 @@ class ProfileModel extends Model
 
         );
         if($request->image) {
+
+            if(Auth::user()->avatar!='profile.png')
+            {
+                File::delete(public_path('img\profile\images\\'.Auth::user()->avatar));
+            }
+
             $data["avatar"] = $request->image->hashName();
             $request->image->store('images', 'public');
         }
@@ -47,6 +55,7 @@ class ProfileModel extends Model
 
 
         if($update !== false){
+            Auth::user()->avatar=$request->image->hashName();
             return true;
         }
         else{
