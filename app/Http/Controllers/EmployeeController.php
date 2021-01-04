@@ -55,6 +55,7 @@ class EmployeeController extends Controller
         $Employee = new EmployeeModel();
         $result = $Employee->updateuser($request, intval($request->userid));
 
+        // Zorgt ervoor dat gebruiker een melding krijgt van de hem of haar doorgevoerde gegevens.
         if($result){
             return redirect()->back()->with('succesMessage', 'De gegevens zijn aangepast.');
         }else{
