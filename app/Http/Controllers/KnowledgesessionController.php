@@ -226,5 +226,30 @@ class KnowledgesessionController extends Controller
             return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
+    function EvaluateSession(Request $request){
+        $rules = [
+            "training" => "required",
+            "speed" => "required",
+            "performance" => "required",
+            "cases" => "required",
+            "time" => "required",
+            "learn" => "required",
+            "knowledge" => "required",
+            "learned" => "required",
+            "missed" => "required",
+            "strong" => "required",
+            "weak" => "required"
+        ];
+
+        $this->validate($request,$rules);
+        $session = new KnowledgesessionModel();
+        $result = $session->SaveEvaluation($request);
+
+        if($result){
+            return redirect()->back()->with('succesMessage', 'Je hebt de sessie geevalueerd');
+        }else{
+            return redirect()->back()->with('errorMessage', 'Er ging iets fout');
+        }
+    }
 
 }

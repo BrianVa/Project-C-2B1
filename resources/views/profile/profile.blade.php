@@ -16,6 +16,13 @@
             $('.SessionOverview').DataTable();
         } );
     </script>
+    <script>
+        function setsession($firstname, $lastname, $begin_date, $end_date, $id) {
+            $("#trainer").text($firstname+' '+$lastname);
+            $("#date").text($begin_date+ ' tot ' + $end_date);
+            document.getElementById("session-id").value=$id;
+        }
+    </script>
 @endsection
 @section('content')
     <!-- Main content -->
@@ -106,13 +113,14 @@
 
                                         <tbody>
                                         @foreach($sessionsdone as $session)
+
                                             <tr>
                                                 <td>{{ $session->title }}</td>
                                                 <td>{{ date_format(new Datetime($session->begin_date),'D j F G:i Y') }}</td>
                                                 <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
                                                 <td>{{ $session ->firstname }} {{$session->lastname }}</td>
                                                 <td>{{ date_format(new Datetime($session->sign_up_at),'D j F G:i Y') }}</td>
-                                                <td><a href="#" data-toggle="modal" data-target="#evaluation" class="btn btn-primary btn-block"><b>Evalueer</b></a></td>
+                                                <td><button onclick="setsession('{{$session->firstname}}', '{{$session->lastname}}', '{{$session->begin_date}}', '{{$session->end_date}}', '{{$session->id}}')" data-toggle="modal" data-target="#evaluation" type="button"  class="btn btn-info ">Evalueer</button></td>
                                             </tr>
                                         @endforeach
                                     </table>

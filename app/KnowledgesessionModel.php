@@ -185,5 +185,36 @@ class KnowledgesessionModel extends Model
             return redirect()->back();
         }
     }
+    function SaveEvaluation($request){
+
+        $data = new \stdClass();
+        $data->training = $request->training;
+        $data->speed = $request->speed;
+        $data->performance = $request->performance;
+        $data->cases = $request->cases;
+        $data->time = $request->time;
+        $data->learn = $request->learn;
+        $data->knowledge = $request->knowledge;
+        $data->learned = $request->learned;
+        $data->missed = $request->missed;
+        $data->strong = $request->strong;
+        $data->weak = $request->weak;
+        $json=json_encode($data);
+
+        $data = array(
+            "user_id" => Auth::user()->id,
+            "know_id" => $request->session_id,
+            "data" => $json,
+        );
+        $insert = DB::table('sessionsevaluation')->insert($data);
+
+
+        if($insert !== false){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }

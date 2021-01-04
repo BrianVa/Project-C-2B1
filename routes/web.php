@@ -37,6 +37,7 @@ Route::get('/kennissessies', 'KnowledgesessionController@KnowledgesessionView')-
 Route::get('/kennissessie/{id}','KnowledgesessionController@SessionUserView')->middleware('auth', 'employee');
 Route::get('/signup/{id}','KnowledgesessionController@SignupSession')->middleware('auth', 'employee');
 Route::get('/annuleer/{id}','KnowledgesessionController@CancelSession')->middleware('auth', 'employee');
+Route::post('/evalueer', 'KnowledgesessionController@EvaluateSession')->middleware('auth', 'employee');
 
 //Knowledgesessions review
 Route::get('/evaluaties','KnowledgesessionController@evaluateView')->middleware('auth', 'facilitator');

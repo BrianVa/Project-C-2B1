@@ -9,52 +9,80 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ url('/evaluation') }}">
+                <form method="post" action="{{ url('/evalueer') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-row">
-                            <div>
+                            <div class="col">
                                <p>Student: </p><p>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
                             </div>
-                            <div>
-                                <p>Student: </p><p>1</p>
+                            <div class="col">
+                                <p>Trainer: </p><p id="trainer"></p>
                             </div>
-                            <div>
-                                <p>Student: </p><p>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
+                            <div class="col">
+                                <p>Date: </p><p id="date"></p>
                             </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Geslacht:</label>
-                        <input type="email" name="email" class="form-control" id="" value="">
-                        @error('email') {{ $message }} @enderror
+                        <label for="">Quality of training material:</label>
+                        <input type="text" name="training" class="form-control" id="" value="">
+                        @error('training') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Email:</label>
-                        <input type="email" name="email" class="form-control" id="" value="">
-                        @error('email') {{ $message }} @enderror
-                    </div>
-                    <div class="form-group ">
-                        <label for="">Geboorte Datum:</label>
-                        <input id="dateofbirth" type="datetime-local" name="dateofbirth" class="form-control">
-                        @error('dateofbirth') {{ $message }} @enderror
+                        <label for="">Speed of training:</label>
+                        <input type="text" name="speed" class="form-control" id="" value="">
+                        @error('speed') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Dieetwensen:</label>
-                        <textarea class="form-control" name="diet" id=""  rows="3"></textarea>
-                        @error('diet') {{ $message }} @enderror
+                        <label for="">Trainer's performance:</label>
+                        <input type="text" name="performance" class="form-control" id="" value="">
+                        @error('performance') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">wachtwoord:</label>
-                        <input name="password" type="password" class="form-control" id="" placeholder="">
-                        @error('password') {{ $message }} @enderror
+                        <label for="">Quality of cases:</label>
+                        <input type="text" name="cases" class="form-control" id="" value="">
+                        @error('cases') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Herhaal wachtwoord:</label>
-                        <input name="h_password" type="password" class="form-control" id="" placeholder="">
-                        @error('h_password') {{ $message }} @enderror
+                        <label for="">Time to perform cases:</label>
+                        <input type="text" name="time" class="form-control" id="" value="">
+                        @error('time') {{ $message }} @enderror
                     </div>
-                    <button type="submit" class="float-right btn btn-primary">Aanmelden</button>
+                    <div class="form-group">
+                        <label for="">How much did you learn?</label>
+                        <input type="text" name="learn" class="form-control" id="" value="">
+                        @error('learn') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="">Trainer's knowledge on subject:</label>
+                        <input type="text" name="knowledge" class="form-control" id="" value="">
+                        @error('knowledge') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="">Name three things that you've learned:</label>
+                        <input type="text" name="learned" class="form-control" id="" value="">
+                        @error('learned') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="">Name three things that you've missed:</label>
+                        <input type="text" name="missed" class="form-control" id="" value="">
+                        @error('missed') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="">Name three strong points of the course:</label>
+                        <input type="text" name="strong" class="form-control" id="" value="">
+                        @error('strong') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="">Name three weak points of the course:</label>
+                        <input type="text" name="weak" class="form-control" id="" value="">
+                        @error('weak') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group"><input hidden type="text" name="session_id" id="session-id" value=""></div>
+                    <button type="submit" class="float-right btn btn-primary">Verzenden</button>
                     <button type="submit" data-dismiss="modal" class="float-left btn btn-secondary">Cancel</button>
+
                 </form>
             </div>
         </div>
