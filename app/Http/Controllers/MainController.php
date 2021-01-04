@@ -31,7 +31,7 @@ class MainController extends Controller
     {
         if(isset(Auth::user()->email))
         {
-            return view('dashboard/panel');
+            return redirect('/profiel');
         }
         else{
             return redirect('/');
