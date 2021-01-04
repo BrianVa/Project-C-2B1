@@ -46,9 +46,6 @@ class ProfileController extends Controller
             ));
         }
 
-
-
-
         $this->validate($request, $rules);
         $profile = new ProfileModel();
         $result = $profile->updateuser($request,Auth::user()->id);

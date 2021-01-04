@@ -41,9 +41,9 @@
     </div>
 @endif
 @if(session()->has('errorMessage'))
-    <div class="alert alert-success msg alert-dismissible">
+    <div class="alert alert-danger msg alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5><i class="icon fa fa-check"></i> Succes!</h5>
+        <h5><i class="icon fa fa-ban"></i> Error!</h5>
         {{session()->get('errorMessage')}}
     </div>
 @endif

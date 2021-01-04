@@ -192,7 +192,6 @@ class KnowledgesessionController extends Controller
             $session = new KnowledgesessionModel();
             $data = $session->DeleteSession($request->route('id'));
 
-
             if($data){
             //    $d = $session->DeleteSession($request->route('id'));
                 // \Mail::to('0952635@hr.nl')->send(new CancelSession($d));

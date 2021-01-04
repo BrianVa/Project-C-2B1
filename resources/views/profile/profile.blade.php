@@ -112,7 +112,7 @@
                                                 <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
                                                 <td>{{ $session ->firstname }} {{$session->lastname }}</td>
                                                 <td>{{ date_format(new Datetime($session->sign_up_at),'D j F G:i Y') }}</td>
-                                                <td><button disabled type="button" class="btn btn-danger">Annuleren</button></td>
+                                                <td><a href="#" data-toggle="modal" data-target="#evaluation" class="btn btn-primary btn-block"><b>Evalueer</b></a></td>
                                             </tr>
                                         @endforeach
                                     </table>
@@ -186,6 +186,7 @@
 @endsection
 
 @extends('main/modals/data')
+@extends('main/modals/evaluation')
 
 
 
