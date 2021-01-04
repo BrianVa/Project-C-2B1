@@ -19,8 +19,15 @@
     <script>
         function setsession($firstname, $lastname, $begin_date, $end_date, $id) {
             $("#trainer").text($firstname+' '+$lastname);
-            $("#date").text($begin_date+ ' tot ' + $end_date);
             document.getElementById("session-id").value=$id;
+            let begin_date = new Date($begin_date);
+            const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            let formatted_begin = begin_date.getDate() + "-" + months[begin_date.getMonth()] + "-" + begin_date.getFullYear();
+            let end_date = new Date($end_date);
+            let formatted_end = end_date.getDate() + "-" + months[end_date.getMonth()] + "-" + end_date.getFullYear();
+            $("#date").text(formatted_begin+ ' tot ' + formatted_end);
+
+
         }
     </script>
 @endsection
