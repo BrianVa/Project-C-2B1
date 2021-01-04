@@ -55,7 +55,9 @@ class ProfileModel extends Model
 
 
         if($update !== false){
-            Auth::user()->avatar=$request->image->hashName();
+            if($request->image) {
+                Auth::user()->avatar = $request->image->hashName();
+            }
             return true;
         }
         else{

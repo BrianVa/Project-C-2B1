@@ -14,6 +14,7 @@ use Illuminate\support\Facades\Mail;
 
 class KnowledgesessionController extends Controller
 {
+
     function KnowledgesessionView(){
         if(isset(Auth::user()->email))
         {
@@ -117,7 +118,7 @@ class KnowledgesessionController extends Controller
 
         if($data > 0){
            // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
-            return redirect()->back()->with('succesMessage', 'Je bent aangemeld voor deze kennissessie!');
+            return redirect()->back()->with('succesMessage', 'Je bent aangemeld voor deze kennissessie! ');
         }else{
             return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
