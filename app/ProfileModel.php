@@ -4,6 +4,7 @@ namespace App;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -89,12 +90,29 @@ class ProfileModel extends Model
                 ['sessionorders.cancelled', '=', true]
             ];
         }
-
         $session = DB::table("sessionorders")
             ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
             ->join('users', 'knowledgesessions.user_id','=','users.id')
             ->select('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id' ,'knowledgesessions.*', 'sessionorders.*', 'users.*')
             ->where($select)
+            ->get();
+
+        return $session;
+    }
+
+    function getsessionssoon($id){
+        $now = Carbon::now();
+        $nu = new DateTime();
+        $session = DB::table("sessionorders")
+            ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
+            ->select('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id' ,'knowledgesessions.*', 'sessionorders.*', 'users.*')
+            ->where([
+                ['sessionorders.user_id', '=', $id],
+                ['sessionorders.cancelled', '=', true],
+                ['knowledgesessions.begin_date', '<', $nu]
+            ])
+            ->whereMonth('knowledgesessions.begin_date', $now->month)
+            ->limit(4)
             ->get();
 
         return $session;

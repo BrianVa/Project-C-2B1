@@ -137,12 +137,6 @@
                                             <p>Gebruikers Overzicht</p>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fa fa-circle-o nav-icon"></i>
-                                            <p>Gebruikers Toevoegen</p>
-                                        </a>
-                                    </li>
                                 @endif
                                 <li class="nav-item">
                                     <a href="{{ url('/kennissessies/beheer') }}" class="nav-link">

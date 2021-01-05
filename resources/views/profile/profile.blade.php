@@ -58,36 +58,17 @@
                     <!-- About Me Box -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Recentelijke Sessies</h3>
+                            <h3 class="card-title">Sessies deze maand</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <strong><i class="fa fa-book mr-1"></i> Sessie 1</strong>
-
-                            <p class="text-muted">
-                                Lorem ipsum dolor sit amet, consectetur.
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fa fa-book mr-1"></i> Sessie 2</strong>
-
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur.</p>
-
-                            <hr>
-
-                            <strong><i class="fa fa-book mr-1"></i> Sessie 3</strong>
-
-                            <p class="text-muted">
-                                Lorem ipsum dolor sit amet, consectetur.
-
-                            </p>
-
-                            <hr>
-
-                            <strong><i class="fa fa-book mr-1"></i> Sessie 4</strong>
-
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur.</p>
+                            @foreach($sessionsdone as $session)
+                                <strong><i class="fa fa-book mr-1"></i> {{ $session->title }}</strong>
+                                <p class="text-muted">
+                                    {{ \Illuminate\Support\Str::limit($session->desc, 100, $end = '...') }}
+                                </p>
+                                <hr>
+                            @endforeach
                         </div>
                         <!-- /.card-body -->
                     </div>

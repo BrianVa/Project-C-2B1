@@ -17,11 +17,14 @@ class ProfileController extends Controller
             $sessionsnow = $profile->getsessionsorders(Auth::user()->id, 'now');
             $sessionsdone = $profile->getsessionsorders(Auth::user()->id, 'done');
             $sessionscan = $profile->getsessionsorders(Auth::user()->id, 'can');
+            $soon = $profile->getsessionsorders(Auth::user()->id, 'soon');
+
             return view('profile/profile', [
                 'data' => $data,
                 'sessionsnow' => $sessionsnow,
                 'sessionsdone' => $sessionsdone,
-                'sessionscan' => $sessionscan
+                'sessionscan' => $sessionscan,
+                'soon' => $soon
             ]);
         }
         else{

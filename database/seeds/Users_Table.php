@@ -85,7 +85,7 @@ class Users_Table extends Seeder
         ]);
 //test
         DB::table('Users')->insert([
-            'firstname' => 'test',
+            'firstname' => 'Test',
             'lastname' => 'Cimsolutions',
             'email' => 'test@cimsolutions.nl',
             'password' => Hash::make('test'),
@@ -107,6 +107,49 @@ class Users_Table extends Seeder
             'dateofbirth' => new DateTime('11/21/1991'),
             'role_id' => 2,
             'sex_id' => 3,
+            'dietary' => null,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+//Ruud
+        DB::table('Users')->insert([
+            'firstname' => 'Ruud',
+            'lastname' => 'Tonissen',
+            'email' => 'ruud@cimsolutions.nl',
+            'password' => Hash::make('test'),
+            'active' => true,
+            'dateofbirth' => new DateTime('11/21/1991'),
+            'role_id' => 4,
+            'sex_id' => 1,
+            'dietary' => null,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+
+//Natnael
+        DB::table('Users')->insert([
+            'firstname' => 'Natnaël',
+            'lastname' => 'Tefera',
+            'email' => 'natnael@cimsolutions.nl',
+            'password' => Hash::make('test'),
+            'active' => true,
+            'dateofbirth' => new DateTime('11/21/1991'),
+            'role_id' => 4,
+            'sex_id' => 1,
+            'dietary' => null,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime()
+        ]);
+//Marco
+        DB::table('Users')->insert([
+            'firstname' => 'Marco',
+            'lastname' => 'Campen',
+            'email' => 'm.campen@cimsolutions.nl',
+            'password' => Hash::make('test'),
+            'active' => true,
+            'dateofbirth' => new DateTime('11/21/1991'),
+            'role_id' => 4,
+            'sex_id' => 1,
             'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
