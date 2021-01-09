@@ -16,6 +16,8 @@ class UsersTable extends Migration
         Schema::create('Users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
+            $table->string('verification_code')->nullable();
+            $table->integer('verified')->default(0);
             $table->string('password', '100');
             $table->boolean('active')->default('1');
             $table->string('firstname','255');

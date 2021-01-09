@@ -10,6 +10,7 @@ use App\Rules\CimsolutionEmail;
 use App\SexModel;
 use App\Mail\RegMail;
 use Illuminate\support\Facades\Mail;
+use phpDocumentor\Reflection\Types\Collection;
 
 class MainController extends Controller
 {
@@ -52,8 +53,12 @@ class MainController extends Controller
 
         if(Auth::attempt($user_data))
         {
-
-            return redirect('/dashboard');
+            if(Auth::user()->verified != 1){
+                Auth::logout();
+                return redirect('/')->with('errorMessage', 'uw account is niet geverifieerd bekijk uw email om de activatie email te vinden!');
+            }else {
+                return redirect('/dashboard');
+            }
         }
         else
         {
@@ -78,20 +83,33 @@ class MainController extends Controller
                 "required",
                 "email",
                 "unique:users",
-                new CimsolutionEmail()
+                //new CimsolutionEmail()
             ],
             "sex" => "required|gt:0",
             "diet" => "max:255"
         ]);
 
         $session = new MainModel();
-        $result = $session->insertuser($request);
+        $code = sha1(time());
+        $result = $session->insertuser($request, $code);
 
         if($result){
-            \Mail::to('0952635@hr.nl')->send(new RegMail($request));
-            return redirect()->back();
+            $collection = collect(['firstname' => $request->firstname, 'lastname' => $request->lastname, 'ver_code' => $code]);
+            \Mail::to($request->email)->send(new RegMail($collection));
+            return redirect()->back()->with('succesMessage', 'Succes uw account is aangemaakt verifieer uw email om te kunnen inloggen');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('errorMessage', 'Er ging iets fout probeer het opnieuw');
+        }
+
+    }
+    function verifyAccount(Request $request){
+        $main = new MainModel();
+        $result = $main->verifyAccount(\Illuminate\Support\Facades\Request::get('code'));
+
+        if($result){
+            return redirect('/')->with('succesMessage', 'Succes uw account is geverifieerd u kunt nu inloggen');
+        }else{
+            return redirect('/')->with('errorMessage', 'Er ging iets fout probeer het opnieuw');
         }
     }
 }

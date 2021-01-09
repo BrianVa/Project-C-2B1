@@ -9,7 +9,7 @@ use DateTime;
 
 class MainModel extends Model
 {
-    function insertuser($request){
+    function insertuser($request, $code){
         $data = array(
             "firstname" => $request->firstname,
             "lastname" => $request->lastname,
@@ -17,6 +17,8 @@ class MainModel extends Model
             "dietary" => $request->diet,
             "password" => Hash::make(trim($request->password)),
             "dateofbirth" => new DateTime($request->dateofbirth),
+            "email_verified_at" => null,
+            "verification_code" => $code,
             "sex_id" => $request->sex,
             "role_id" => 1,
             "created_at" => new DateTime(),
@@ -29,6 +31,27 @@ class MainModel extends Model
             return true;
         }
         else{
+            return false;
+        }
+    }
+    function verifyAccount($code){
+        $check = DB::table('users')
+            ->select('verification_code')
+            ->where('verification_code','=',$code)
+            ->first();
+
+        if($check != null){
+            $update = DB::table('users')
+                ->where('verification_code','=',$code)
+                ->update(["verified" => 1]);
+
+            if($update !== false){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }else{
             return false;
         }
     }

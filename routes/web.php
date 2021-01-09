@@ -3,6 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+//General
+Route::post('/loggingin', 'MainController@checklogin');
+Route::post('/register', 'MainController@register');
+Route::get('/logout', 'MainController@logout')->middleware('auth', 'employee');
+Route::get('/', 'MainController@LoginView');
+Route::get('/verify','MainController@verifyAccount');
 
 //Admin
 Route::get('/gebruikers','EmployeeController@EmployeeView')->middleware('auth', 'admin');
@@ -13,13 +19,6 @@ Route::post('/updategebruiker', 'EmployeeController@UpdateEmployee')->middleware
 Route::get('/dashboard', 'MainController@DashboardView')->middleware('auth', 'employee');
 Route::get('/profiel', 'ProfileController@ProfileView')->middleware('auth', 'employee');
 Route::post('/updatedata', 'ProfileController@UpdateUserData')->middleware('auth', 'employee');
-
-//General
-Route::post('/loggingin', 'MainController@checklogin');
-Route::post('/register', 'MainController@register');
-Route::get('/logout', 'MainController@logout')->middleware('auth', 'employee');
-Route::get('/', 'MainController@LoginView');
-
 
 //Knowledgesessions facilitator
 Route::get('/kennissessies/beheer', 'KnowledgesessionController@KnowledgesessionBeheer')->middleware('auth', 'facilitator');

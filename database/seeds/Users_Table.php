@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\DB;
 
 class Users_Table extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
 //brian
@@ -18,6 +13,8 @@ class Users_Table extends Seeder
             'firstname' => 'Brian',
             'lastname' => 'Vaartjes',
             'email' => '0952635@hr.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('07/06/1995'),
@@ -32,6 +29,8 @@ class Users_Table extends Seeder
             'firstname' => 'Ingrid',
             'lastname' => 'Bouman',
             'email' => '0927209@hr.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('9/23/1998'),
@@ -46,6 +45,8 @@ class Users_Table extends Seeder
             'firstname' => 'Laura',
             'lastname' => 'Bos',
             'email' => '0934987@hr.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('12/12/2019'),
@@ -60,6 +61,8 @@ class Users_Table extends Seeder
             'firstname' => 'Koen',
             'lastname' => 'Schreuder',
             'email' => '0895905@hr.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('6/6/1966'),
@@ -74,6 +77,8 @@ class Users_Table extends Seeder
             'firstname' => 'Diederik ',
             'lastname' => 'van Walraven',
             'email' => '0896990@hr.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('11/11/1911'),
@@ -88,6 +93,8 @@ class Users_Table extends Seeder
             'firstname' => 'Test',
             'lastname' => 'Cimsolutions',
             'email' => 'test@cimsolutions.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('05/03/1986'),
@@ -102,6 +109,8 @@ class Users_Table extends Seeder
             'firstname' => 'Organisator',
             'lastname' => 'Test',
             'email' => 'organisator@cimsolutions.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('11/21/1991'),
@@ -116,6 +125,8 @@ class Users_Table extends Seeder
             'firstname' => 'Ruud',
             'lastname' => 'Tonissen',
             'email' => 'ruud@cimsolutions.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('11/21/1991'),
@@ -131,6 +142,8 @@ class Users_Table extends Seeder
             'firstname' => 'Natnaël',
             'lastname' => 'Tefera',
             'email' => 'natnael@cimsolutions.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('11/21/1991'),
@@ -145,6 +158,8 @@ class Users_Table extends Seeder
             'firstname' => 'Marco',
             'lastname' => 'Campen',
             'email' => 'm.campen@cimsolutions.nl',
+            'verification_code' => sha1(time()),
+            'verified' => 1,
             'password' => Hash::make('test'),
             'active' => true,
             'dateofbirth' => new DateTime('11/21/1991'),

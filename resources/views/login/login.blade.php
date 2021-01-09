@@ -15,8 +15,32 @@
     <link rel="stylesheet" href="{{ url('/css/dashboard/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ url('/css/dashboard/google.css') }}">
+    <style>
+        .msg{
+            position: absolute!important;
+            top: 0!important;
+            right: 0!important;
+            z-index: 9999!important;
+            margin-top: 3%!important;
+            max-width: 500px!important;
+        }
+    </style>
 </head>
 <body class="hold-transition login-page">
+@if(session()->has('succesMessage'))
+    <div class="alert alert-success msg alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fa fa-check"></i> Succes!</h5>
+        {{session()->get('succesMessage')}}
+    </div>
+@endif
+@if(session()->has('errorMessage'))
+    <div class="alert alert-danger msg alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fa fa-ban"></i> Error!</h5>
+        {{session()->get('errorMessage')}}
+    </div>
+@endif
 <div class="login-box">
     <div class="login-logo">
         <a href=""><b>Cimsolutions</a>
