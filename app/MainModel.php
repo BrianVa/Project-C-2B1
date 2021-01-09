@@ -17,7 +17,6 @@ class MainModel extends Model
             "dietary" => $request->diet,
             "password" => Hash::make(trim($request->password)),
             "dateofbirth" => new DateTime($request->dateofbirth),
-            "email_verified_at" => null,
             "verification_code" => $code,
             "sex_id" => $request->sex,
             "role_id" => 1,
