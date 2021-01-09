@@ -251,5 +251,15 @@ class KnowledgesessionController extends Controller
             return redirect()->back()->with('errorMessage', 'Er ging iets fout');
         }
     }
+    function attendUser(Request $request){
 
+        $session = new KnowledgesessionModel();
+        $result = $session->attendUser($request->route('ses_id'), $request->route('user_id'));
+
+        if($result){
+            return redirect()->back()->with('succesMessage', 'de gebruiker is aanwezig gezet');
+        }else{
+            return redirect()->back()->with('errorMessage', 'Er ging iets fout');
+        }
+    }
 }

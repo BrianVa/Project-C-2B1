@@ -31,6 +31,8 @@ Route::get('/annuleer/kennissesie/{know_id}/gebruiker/{user_id}', 'Knowledgesess
 Route::get('/verwijder/kennissesie/{know_id}/gebruiker/{user_id}', 'KnowledgesessionController@removeAttendee')->middleware('auth','facilitator');
 Route::get('/addattendee/kennissesie/{know_id}/gebruiker/{id}', 'KnowledgesessionController@addAttendee')->middleware('auth','facilitator');
 Route::get('/delete/{id}', 'KnowledgesessionController@DeleteSession')->middleware('auth', 'facilitator');
+Route::get('/attend/user/{user_id}/session/{ses_id}', 'KnowledgesessionController@attendUser')->middleware('auth', 'facilitator');
+
 
 //Knowledgesessions employee
 Route::get('/kennissessies', 'KnowledgesessionController@KnowledgesessionView')->middleware('auth', 'employee');

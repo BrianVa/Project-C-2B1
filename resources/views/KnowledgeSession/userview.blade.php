@@ -46,7 +46,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <a href="{{url('/signup')}}/{{ $data->know_id }}" @if($data->checked) class="btn btn-primary float-right disabled" @else class="btn btn-primary float-right" @endif ><b>Aanmelden</b></a>
+                <a href="{{url('/signup')}}/{{ $data->know_id }}" class="@if(\Carbon\Carbon::parse($data->begin_date)->isPast()) disabled @endif btn btn-primary @if($data->checked) disabled @endif float-right"><b>Aanmelden</b></a>
             </div>
             <!-- /.card-footer-->
         </div>
@@ -70,6 +70,7 @@
                         <th>Status</th>
                         <th>dieetwensen</th>
                         <th>Afwijzen</th>
+                        <th>Aanwezig zetten</th>
                         <th>Verwijderen</th>
                     </tr>
                     </thead>
@@ -79,8 +80,9 @@
                             <td>{{ $user->firstname }} {{ $user->lastname }}</td>
                             <td>{{ $user->sign_up_at }}</td>
                             <td>{{ $user->cancelled ? 'Geannuleerd' : 'Aangemeld' }}</td>
-                            <td><button onclick="setdiet('{{$user->dietary}}')" data-toggle="modal" data-target="#diet" type="button"  class="btn btn-info @if($user->dietary == '') disabled @endif">Bekijken</button></td>
-                            <td><a href="{{url('/annuleer/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$user->id}}"  class="btn btn-warning btn-block @if($user->cancelled == 1) disabled @endif">Afwijzen</a></td>
+                            <td><button @if($user->dietary != "") onclick="setdiet('{{$user->dietary}}')" data-toggle="modal" data-target="#diet" @endif type="button"  class="btn btn-info @if($user->dietary == '') disabled @endif">Bekijken</button></td>
+                            <td><a href="{{url('/annuleer/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$user->id}}"  class="btn btn-warning btn-block @if($user->cancelled == 1) disabled @endif @if(\Carbon\Carbon::parse($data->begin_date)->isPast()) disabled @endif">Afwijzen</a></td>
+                            <td><a href="{{url('/attend/user')}}/{{$user->user_id}}/session/{{$user->ses_id}}"  class="btn btn-info btn-block @if(!\Carbon\Carbon::parse($data->begin_date)->isPast()) disabled @endif @if($user->attended == 1) disabled @endif">Aanwezig</a></td>
                             <td><a href="{{url('/verwijder/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$user->id}}" class="btn btn-danger btn-block @if($user->cancelled == 0) disabled @endif">Verwijderen</a></td>
                         </tr>
                     @endforeach
@@ -112,7 +114,6 @@
                             <th>Geboorte Datum</th>
                             <th>Geslacht</th>
                             <th>Role</th>
-                            <th>Actief</th>
                             <th>Toevoegen</th>
                         </tr>
                         </thead>
@@ -124,8 +125,7 @@
                                 <td>{{ date_format(new Datetime($applicant->dateofbirth),'d/m/Y') }}</td>
                                 <td>{{ $applicant->gender }}</td>
                                 <td>{{ $applicant->function }}</td>
-                                <td>{{ $applicant->active ? 'Actief' : 'Inactief' }}</td>
-                                <td> <a href="{{url('/addattendee/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$applicant->id}}"  class="btn btn-success btn-block"><b>Toevoegen</b></a></td>
+                                <td> <a href="{{url('/addattendee/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$applicant->id}}" class="btn btn-success btn-block"><b>Toevoegen</b></a></td>
                             </tr>
                         @endforeach
                         </tbody>

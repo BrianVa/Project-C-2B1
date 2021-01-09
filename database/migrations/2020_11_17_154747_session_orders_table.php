@@ -23,6 +23,7 @@ class SessionOrdersTable extends Migration
             $table->foreign('know_id')->references('id')->on('Knowledgesessions');
             $table->dateTime('sign_up_at');
             $table->boolean('cancelled')->default(false);
+            $table->boolean('attended')->default(false);
             $table->timestamps();
         });
     }

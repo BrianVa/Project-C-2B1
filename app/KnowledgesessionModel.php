@@ -33,13 +33,10 @@ class KnowledgesessionModel extends Model
         }
     }
     function getFacSessions(){
-        $now = new DateTime();
-        $select = [
-            ['knowledgesessions.begin_date','>=', $now],
-        ];
+        $select = [];
         if (Auth::user()->role_id == 2){
             array_merge($select, array(
-                $select[1] = ['knowledgesessions.user_id','=', Auth::user()->id]
+                $select[0] = ['knowledgesessions.user_id','=', Auth::user()->id]
             ));
         }
         $sessions = DB::table($this->table)
@@ -210,6 +207,23 @@ class KnowledgesessionModel extends Model
 
 
         if($insert !== false){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function attendUser($sid, $uid){
+
+        $update = DB::table('sessionorders')
+            ->where([
+                ["user_id", "=", $uid],
+                ["know_id", "=", $sid]
+            ])
+            ->update(["attended" => 1]);
+
+        if($update !== false){
             return true;
         }
         else{
