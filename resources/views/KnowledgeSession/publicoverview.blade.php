@@ -32,8 +32,8 @@
                 <thead>
                 <tr>
                     <th>Sessie</th>
-                    <th>Begin tijd</th>
-                    <th>Eind tijd</th>
+                    <th>Begintijd</th>
+                    <th>Eindtijd</th>
                     <th>Plekken vrij</th>
                     <th>Meer info</th>
                 </tr>

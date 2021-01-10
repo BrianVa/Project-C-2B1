@@ -66,9 +66,9 @@
                     <thead>
                     <tr>
                         <th>Naam</th>
-                        <th>Aangemeld op:</th>
+                        <th>Aangemeld op</th>
                         <th>Status</th>
-                        <th>dieetwensen</th>
+                        <th>Dieetwensen</th>
                         <th>Afwijzen</th>
                         <th>Aanwezig zetten</th>
                         <th>Verwijderen</th>
@@ -111,9 +111,9 @@
                         <tr>
                             <th>Naam</th>
                             <th>Email</th>
-                            <th>Geboorte Datum</th>
+                            <th>Geboortedatum</th>
                             <th>Geslacht</th>
-                            <th>Role</th>
+                            <th>Rol</th>
                             <th>Toevoegen</th>
                         </tr>
                         </thead>

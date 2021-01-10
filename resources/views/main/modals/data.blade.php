@@ -39,7 +39,7 @@
                         <input type="text" disabled name="role" class="form-control" id="" value="{{ $data->function }}">
                     </div>
                     <div class="form-group ">
-                        <label for="">Geboorte Datum:</label>
+                        <label for="">Geboortedatum:</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>

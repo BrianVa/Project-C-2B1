@@ -27,7 +27,7 @@
                 <form method="post" action="{{ url('/addingsession') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label>Title van de kennissessie:</label>
+                        <label>Titel van de kennissessie:</label>
                         <input type="text" class="form-control" name="title">
                         @error('title') {{ $message }} @enderror
                     </div>
@@ -53,12 +53,12 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <label>Begin tijd:</label>
+                                <label>Begintijd:</label>
                                 <input id="datemask" type="datetime-local" name="begin_time" class="form-control">
                                 @error('begin_time') {{ $message }} @enderror
                             </div>
                             <div class="col">
-                                <label>Eind tijd:</label>
+                                <label>Eindtijd:</label>
                                 <input type="datetime-local" name="end_time" class="form-control">
                                 @error('end_time') {{ $message }} @enderror
                             </div>

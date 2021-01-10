@@ -19,7 +19,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Gebruikers Overzicht</h3>
+                <h3 class="card-title">Gebruikersoverzicht</h3>
 
                 {{--<div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -34,9 +34,9 @@
                     <tr>
                         <th>Naam</th>
                         <th>Email</th>
-                        <th>Geboorte Datum</th>
+                        <th>Geboortedatum</th>
                         <th>Geslacht</th>
-                        <th>Role</th>
+                        <th>Rol</th>
                         <th>Aangemeld op</th>
                         <th>Actief</th>
                         <th>Bekijken</th>

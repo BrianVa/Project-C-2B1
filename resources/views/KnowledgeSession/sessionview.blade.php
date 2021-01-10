@@ -23,7 +23,7 @@
                 <form method="post" action="{{ url('/updatesession') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label>Title van de kennissessie:</label>
+                        <label>Titel van de kennissessie:</label>
                         <input type="text" class="form-control" name="title" value="{{ $data->title }}">
                         @error('title') {{ $message }} @enderror
                     </div>
@@ -49,12 +49,12 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <label>Begin tijd:</label>
+                                <label>Begintijd:</label>
                                 <input id="datemask" type="datetime-local" name="begin_time" class="form-control" value="{{ date_format(new Datetime($data->begin_date),'Y-m-d\TH:i') }}">
                                 @error('begin_time') {{ $message }} @enderror
                             </div>
                             <div class="col">
-                                <label>Eind tijd:</label>
+                                <label>Eindtijd:</label>
                                 <input hidden name="knowid" type="text" class="form-control" value="{{$data->know_id}}">
                                 <input type="datetime-local" name="end_time" class="form-control" value="{{ date_format(new Datetime($data->end_date),'Y-m-d\TH:i') }}">
                                 @error('end_time') {{ $message }} @enderror

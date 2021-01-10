@@ -109,7 +109,7 @@
                             <li class="nav-item">
                                 <a href="{{ url('/logout') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>uitloggen</p>
+                                    <p>Uitloggen</p>
                                 </a>
                             </li>
                             <li class="nav-item">

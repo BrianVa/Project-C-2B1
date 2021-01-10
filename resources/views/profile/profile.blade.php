@@ -91,9 +91,9 @@
                                         <thead>
                                         <tr>
                                             <th>Sessie</th>
-                                            <th>Begin tijd</th>
-                                            <th>Eind tijd</th>
-                                            <th>Sessie leider</th>
+                                            <th>Begintijd</th>
+                                            <th>Eindtijd</th>
+                                            <th>Sessieleider</th>
                                             <th>Aangemeld</th>
                                             <th>Annuleren</th>
                                         </tr>
@@ -118,9 +118,9 @@
                                         <thead>
                                         <tr>
                                             <th>Sessie</th>
-                                            <th>Begin tijd</th>
-                                            <th>Eind tijd</th>
-                                            <th>Sessie leider</th>
+                                            <th>Begintijd</th>
+                                            <th>Eindtijd</th>
+                                            <th>Sessieleider</th>
                                             <th>Aangemeld</th>
                                             <th>Annuleren</th>
                                         </tr>
@@ -145,9 +145,9 @@
                                         <thead>
                                         <tr>
                                             <th>Sessie</th>
-                                            <th>Begin tijd</th>
-                                            <th>Eind tijd</th>
-                                            <th>Sessie leider</th>
+                                            <th>Begintijd</th>
+                                            <th>Eindtijd</th>
+                                            <th>Sessieleider</th>
                                             <th>Aangemeld</th>
                                             <th>Annuleren</th>
                                         </tr>

@@ -40,7 +40,7 @@
                         @error('email') {{ $message }} @enderror
                     </div>
                     <div class="form-group ">
-                        <label for="">Geboorte Datum:</label>
+                        <label for="">Geboortedatum:</label>
                         <input id="dateofbirth" type="datetime-local" name="dateofbirth" class="form-control">
                         @error('dateofbirth') {{ $message }} @enderror
                     </div>
@@ -50,7 +50,7 @@
                         @error('diet') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">wachtwoord:</label>
+                        <label for="">Wachtwoord:</label>
                         <input name="password" type="password" class="form-control" id="" placeholder="">
                         @error('password') {{ $message }} @enderror
                     </div>
