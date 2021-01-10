@@ -55,14 +55,14 @@ class MainController extends Controller
         {
             if(Auth::user()->verified != 1){
                 Auth::logout();
-                return redirect('/')->with('errorMessage', 'uw account is niet geverifieerd bekijk uw email om de activatie email te vinden!');
+                return redirect('/')->with('errorMessage', 'uw account is niet geverifieerd. Bekijk uw email om de activatiemail te vinden!');
             }else {
                 return redirect('/dashboard');
             }
         }
         else
         {
-            return back()->with('error', 'Verkeerde login gegevens');
+            return back()->with('error', 'Verkeerde logingegevens.');
         }
     }
 
@@ -96,9 +96,9 @@ class MainController extends Controller
         if($result){
             $collection = collect(['firstname' => $request->firstname, 'lastname' => $request->lastname, 'ver_code' => $code]);
             \Mail::to($request->email)->send(new RegMail($collection));
-            return redirect()->back()->with('succesMessage', 'Succes uw account is aangemaakt verifieer uw email om te kunnen inloggen');
+            return redirect()->back()->with('succesMessage', 'Succes! Uw account is aangemaakt. Verifieer uw email om te kunnen inloggen.');
         }else{
-            return redirect()->back()->with('errorMessage', 'Er ging iets fout probeer het opnieuw');
+            return redirect()->back()->with('errorMessage', 'Er ging iets fout, probeer het opnieuw.');
         }
 
     }
@@ -107,9 +107,9 @@ class MainController extends Controller
         $result = $main->verifyAccount(\Illuminate\Support\Facades\Request::get('code'));
 
         if($result){
-            return redirect('/')->with('succesMessage', 'Succes uw account is geverifieerd u kunt nu inloggen');
+            return redirect('/')->with('succesMessage', 'Succes! Uw account is geverifieerd. U kunt nu inloggen.');
         }else{
-            return redirect('/')->with('errorMessage', 'Er ging iets fout probeer het opnieuw');
+            return redirect('/')->with('errorMessage', 'Er ging iets fout, probeer het opnieuw.');
         }
     }
 }

@@ -248,7 +248,7 @@ class KnowledgesessionController extends Controller
         if($result){
             return redirect()->back()->with('succesMessage', 'Je hebt de sessie geevalueerd');
         }else{
-            return redirect()->back()->with('errorMessage', 'Er ging iets fout');
+            return redirect()->back()->with('errorMessage', 'Er ging iets fout.');
         }
     }
     function attendUser(Request $request){
@@ -257,9 +257,9 @@ class KnowledgesessionController extends Controller
         $result = $session->attendUser($request->route('ses_id'), $request->route('user_id'));
 
         if($result){
-            return redirect()->back()->with('succesMessage', 'de gebruiker is aanwezig gezet');
+            return redirect()->back()->with('succesMessage', 'De gebruiker is aanwezig gezet.');
         }else{
-            return redirect()->back()->with('errorMessage', 'Er ging iets fout');
+            return redirect()->back()->with('errorMessage', 'Er ging iets fout.');
         }
     }
 }
