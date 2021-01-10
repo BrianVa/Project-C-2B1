@@ -134,7 +134,7 @@
                                     <li class="nav-item">
                                         <a href="{{ url('/gebruikers') }}" class="nav-link">
                                             <i class="fa fa-circle-o nav-icon"></i>
-                                            <p>Gebruikers Overzicht</p>
+                                            <p>Gebruikersoverzicht</p>
                                         </a>
                                     </li>
                                 @endif

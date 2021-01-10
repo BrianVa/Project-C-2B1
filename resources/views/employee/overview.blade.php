@@ -1,6 +1,6 @@
 @extends('main/layout')
-@section('title', "Overview")
-@section('page_title', "Overview")
+@section('title', "Gebruikersoverzicht")
+@section('page_title', "Gebruikersoverzicht")
 @section('includes_css')
     <link rel="stylesheet" href="{{ url('/css/datatables/datatable.css') }}">
 @endsection
