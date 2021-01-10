@@ -236,4 +236,14 @@ class KnowledgesessionModel extends Model
         }
     }
 
+    function getFeedBack($id){
+        return DB::table('sessionsevaluation')
+            ->select()
+            ->join('users', 'sessionsevaluation.user_id','=','users.id')
+            ->join('knowledgesessions', 'knowledgesessions.id', '=', 'sessionsevaluation.know_id')
+            ->where('know_id', '=', $id)
+            ->get();
+
+    }
+
 }

@@ -141,7 +141,7 @@
                                                 <td>{{ date_format(new Datetime($session->end_date),'D j F G:i Y') }}</td>
                                                 <td>{{ $session ->firstname }} {{$session->lastname }}</td>
                                                 <td>{{ date_format(new Datetime($session->sign_up_at),'D j F G:i Y') }}</td>
-                                                <td><button @if($session->attended == 1) onclick="setsession('{{$session->firstname}}', '{{$session->lastname}}', '{{$session->begin_date}}', '{{$session->end_date}}', '{{$session->id}}')"  data-toggle="modal" data-target="#evaluation" @endif type="button"  class="@if($session->attended == 0) disabled @endif btn btn-info ">Evalueer</button></td>
+                                                <td><button @if($session->attended == 1) onclick="setsession('{{$session->firstname}}', '{{$session->lastname}}', '{{$session->begin_date}}', '{{$session->end_date}}', '{{$session->s_id}}')"  data-toggle="modal" data-target="#evaluation" @endif type="button"  class="@if($session->attended == 0) disabled @endif btn btn-info ">Evalueer</button></td>
                                             </tr>
                                         @endforeach
                                     </table>

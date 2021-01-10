@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ url('/evalueer') }}">
+                <form method="post" id="feedback_form" action="{{ url('/evalueer') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-row">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Quality of training material:</label>
-                        <input type="text" name="training" class="form-control" id="" value="">
+                        <input type="text" name="training" class="form-control" id="training" value="">
                         @error('training') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Speed of training:</label>
-                        <input type="text" name="speed" class="form-control" id="" value="">
+                        <input type="text" name="speed" class="form-control" id="speed">
                         @error('speed') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Trainer's performance:</label>
-                        <input type="text" name="performance" class="form-control" id="" value="">
+                        <input type="text" name="performance" class="form-control" id="performance" value="">
                         @error('performance') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Quality of cases:</label>
-                        <input type="text" name="cases" class="form-control" id="" value="">
+                        <input type="text" name="cases" class="form-control" id="cases" value="">
                         @error('cases') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
@@ -98,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Time to perform cases:</label>
-                        <input type="text" name="time" class="form-control" id="" value="">
+                        <input type="text" name="time" class="form-control" id="time" value="">
                         @error('time') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
@@ -116,7 +116,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">How much did you learn?</label>
-                        <input type="text" name="learn" class="form-control" id="" value="">
+                        <input type="text" name="learn" class="form-control" id="learn" value="">
                         @error('learn') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
@@ -134,7 +134,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Trainer's knowledge on subject:</label>
-                        <input type="text" name="knowledge" class="form-control" id="" value="">
+                        <input type="text" name="knowledge" class="form-control" id="knowledge" value="">
                         @error('knowledge') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
@@ -152,26 +152,26 @@
                     </div>
                     <div class="form-group">
                         <label for="">Name three things that you've learned:</label>
-                        <input type="text" name="learned" class="form-control" id="" value="">
+                        <input type="text" name="learned" class="form-control" id="learned" value="">
                         @error('learned') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Name three things that you've missed:</label>
-                        <input type="text" name="missed" class="form-control" id="" value="">
+                        <input type="text" name="missed" class="form-control" id="missed" value="">
                         @error('missed') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Name three strong points of the course:</label>
-                        <input type="text" name="strong" class="form-control" id="" value="">
+                        <input type="text" name="strong" class="form-control" id="strong" value="">
                         @error('strong') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Name three weak points of the course:</label>
-                        <input type="text" name="weak" class="form-control" id="" value="">
+                        <input type="text" name="weak" class="form-control" id="weak" value="">
                         @error('weak') {{ $message }} @enderror
                     </div>
                     <div class="form-group"><input hidden type="text" name="session_id" id="session-id" value=""></div>
-                    <button type="submit" class="float-right btn btn-primary">Verzenden</button>
+                    <button type="submit" class="float-right btn btn-primary" id="send_feedback">Verzenden</button>
                     <button type="submit" data-dismiss="modal" class="float-left btn btn-secondary">Cancel</button>
 
                 </form>

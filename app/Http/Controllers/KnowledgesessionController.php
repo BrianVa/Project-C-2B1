@@ -99,11 +99,13 @@ class KnowledgesessionController extends Controller
             $users = $session->getSessionUsers($request->route('id'));
             $applicants = $applicant->GetApplicants($request->route('id'));
             $data->checked = $session->checkOrder($request->route('id'));
+            $feedback = $session->getFeedBack($request->route('id'));
 
             return view('KnowledgeSession/userview', [
                 'data' => $data,
                 'users' => $users,
-                'applicants' => $applicants
+                'applicants' => $applicants,
+                'feedback' => $feedback
             ]);
         }
         else {
