@@ -30,9 +30,35 @@
                         @error('training') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="training_radio" value="0" required>--</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="training_radio" value="1" required>-</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="training_radio" value="2" required>-/+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="training_radio" value="3" required>+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="training_radio" value="4" required>++</label>
+                        @error('training_radio') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="">Speed of training:</label>
                         <input type="text" name="speed" class="form-control" id="" value="">
                         @error('speed') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="speed_radio" value="0" required>--</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="speed_radio" value="1" required>-</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="speed_radio" value="2" required>-/+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="speed_radio" value="3" required>+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="speed_radio" value="4" required>++</label>
+                        @error('speed_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Trainer's performance:</label>
@@ -40,9 +66,35 @@
                         @error('performance') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="performance_radio" value="0" required>--</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="performance_radio" value="1" required>-</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="performance_radio" value="2" required>-/+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="performance_radio" value="3" required>+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="performance_radio" value="4" required>++</label>
+                        @error('performance_radio') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="">Quality of cases:</label>
                         <input type="text" name="cases" class="form-control" id="" value="">
                         @error('cases') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="cases_radio" value="0" required>--</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="cases_radio" value="1" required>-</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="cases_radio" value="2" required>-/+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="cases_radio" value="3" required>+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="cases_radio" value="4" required>++</label>
+                        @error('cases_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Time to perform cases:</label>
@@ -50,14 +102,53 @@
                         @error('time') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="time_radio" value="0" required>--</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="time_radio" value="1" required>-</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="time_radio" value="2" required>-/+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="time_radio" value="3" required>+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="time_radio" value="4" required>++</label>
+                        @error('time_radio') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="">How much did you learn?</label>
                         <input type="text" name="learn" class="form-control" id="" value="">
                         @error('learn') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="learn_radio" value="0" required>--</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="learn_radio" value="1" required>-</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="learn_radio" value="2" required>-/+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="learn_radio" value="3" required>+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="learn_radio" value="4" required>++</label>
+                        @error('learn_radio') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="">Trainer's knowledge on subject:</label>
                         <input type="text" name="knowledge" class="form-control" id="" value="">
                         @error('knowledge') {{ $message }} @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="knowledge_radio" value="0" required>--</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="knowledge_radio" value="1" required>-</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="knowledge_radio" value="2" required>-/+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="knowledge_radio" value="3" required>+</label>
+                        <label class="radio-label-vertical">
+                            <input type="radio" name="knowledge_radio" value="4" required>++</label>
+                        @error('knowledge_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Name three things that you've learned:</label>

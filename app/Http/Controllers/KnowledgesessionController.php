@@ -229,12 +229,19 @@ class KnowledgesessionController extends Controller
     function EvaluateSession(Request $request){
         $rules = [
             "training" => "required",
+            "training_radio" => "required",
             "speed" => "required",
+            "speed_radio" => "required",
             "performance" => "required",
+            "performance_radio" => "required",
             "cases" => "required",
+            "cases_radio" => "required",
             "time" => "required",
+            "time_radio" => "required",
             "learn" => "required",
+            "learn_radio" => "required",
             "knowledge" => "required",
+            "knowledge_radio" => "required",
             "learned" => "required",
             "missed" => "required",
             "strong" => "required",
@@ -254,7 +261,7 @@ class KnowledgesessionController extends Controller
     function attendUser(Request $request){
 
         $session = new KnowledgesessionModel();
-        $result = $session->attendUser($request->route('ses_id'), $request->route('user_id'));
+        $result = $session->attendUser($request->route('ses_id'));
 
         if($result){
             return redirect()->back()->with('succesMessage', 'De gebruiker is aanwezig gezet.');

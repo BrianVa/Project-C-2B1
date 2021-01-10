@@ -4,6 +4,42 @@
 @section('includes_css')
     <link rel="stylesheet" href="{{ url('/css/datetimepicker/date.css') }}">
     <link rel="stylesheet" href="{{ url('/css/datatables/datatable.css') }}">
+    <style>
+        .radio-label-vertical-wrapper {
+            padding-bottom: 13px;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .radio-label-vertical-wrapper:before {
+            content: ' ';
+            display: block;
+            width: 100%;
+            height: 30px;
+            background: #efefef;
+            position: absolute;
+            bottom: 0;
+        }
+        .radio-label-vertical-wrapper label:not(.radio-label-vertical) {
+            display: block;
+            width: 100%;
+        }
+        .radio-label-vertical {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .radio-label-vertical input {
+            position: absolute;
+            top: 28px;
+            left: 50%;
+            margin-left: -6px;
+            display: block;
+            cursor: pointer;
+        }
+    </style>
 @endsection
 @section('includes_js')
     <script src="{{ url('/js/datetimepicker/moment.js') }}"></script>
@@ -26,8 +62,6 @@
             let end_date = new Date($end_date);
             let formatted_end = end_date.getDate() + "-" + months[end_date.getMonth()] + "-" + end_date.getFullYear();
             $("#date").text(formatted_begin+ ' tot ' + formatted_end);
-
-
         }
     </script>
 @endsection

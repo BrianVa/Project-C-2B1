@@ -82,7 +82,7 @@
                             <td>{{ $user->cancelled ? 'Geannuleerd' : 'Aangemeld' }}</td>
                             <td><button @if($user->dietary != "") onclick="setdiet('{{$user->dietary}}')" data-toggle="modal" data-target="#diet" @endif type="button"  class="btn btn-info @if($user->dietary == '') disabled @endif">Bekijken</button></td>
                             <td><a href="{{url('/annuleer/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$user->id}}"  class="btn btn-warning btn-block @if($user->cancelled == 1) disabled @endif @if(\Carbon\Carbon::parse($data->begin_date)->isPast()) disabled @endif">Afwijzen</a></td>
-                            <td><a href="{{url('/attend/user')}}/{{$user->user_id}}/session/{{$user->ses_id}}"  class="btn btn-info btn-block @if(!\Carbon\Carbon::parse($data->begin_date)->isPast()) disabled @endif @if($user->attended == 1) disabled @endif">Aanwezig</a></td>
+                            <td><a href="{{url('/attend/user')}}/{{$user->ses_id}}"  class="btn btn-info btn-block @if(!\Carbon\Carbon::parse($data->begin_date)->isPast()) disabled @endif @if($user->attended == 1) disabled @endif">Aanwezig</a></td>
                             <td><a href="{{url('/verwijder/kennissesie')}}/{{$data->know_id}}/gebruiker/{{$user->id}}" class="btn btn-danger btn-block @if($user->cancelled == 0) disabled @endif">Verwijderen</a></td>
                         </tr>
                     @endforeach

@@ -186,13 +186,21 @@ class KnowledgesessionModel extends Model
 
         $data = new \stdClass();
         $data->training = $request->training;
+        $data->training_radio = $request->training_radio;
         $data->speed = $request->speed;
+        $data->speed_radio = $request->speed_radio;
         $data->performance = $request->performance;
+        $data->performance_radio = $request->performance_radio;
         $data->cases = $request->cases;
+        $data->cases_radio = $request->cases_radio;
         $data->time = $request->time;
+        $data->time_radio = $request->time_radio;
         $data->learn = $request->learn;
+        $data->learn_radio = $request->learn_radio;
         $data->knowledge = $request->knowledge;
+        $data->knowledge_radio = $request->knowledge_radio;
         $data->learned = $request->learned;
+        $data->learned_radio = $request->learned_radio;
         $data->missed = $request->missed;
         $data->strong = $request->strong;
         $data->weak = $request->weak;
@@ -214,13 +222,10 @@ class KnowledgesessionModel extends Model
         }
     }
 
-    function attendUser($sid, $uid){
-
+    function attendUser($sid){
+        echo $sid;
         $update = DB::table('sessionorders')
-            ->where([
-                ["user_id", "=", $uid],
-                ["know_id", "=", $sid]
-            ])
+            ->where("know_id", "=", $sid)
             ->update(["attended" => 1]);
 
         if($update !== false){
