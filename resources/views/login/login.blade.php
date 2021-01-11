@@ -44,6 +44,10 @@
 <div class="login-box">
     <div class="login-logo">
         <a href=""><b>Cimsolutions</a>
+        <img src="{{ url('/img/AdminLTELogo.png') }}"
+             alt="AdminLTE Logo"
+             class="brand-image img-circle elevation-3"
+             style="opacity: .8; margin-top: 8px; margin-left: .5rem; margin-right: -2.1rem">
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -58,12 +62,12 @@
                 <div class="form-group has-feedback">
                     <input type="password" name="password" class="form-control" placeholder="Wachtwoord">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
+                <button type="submit" class="btn btn-success btn-block btn-flat">Login</button>
             </form>
 
             <div class="social-auth-links text-center mb-3">
                 <p>- ∞ -</p>
-                <a data-toggle="modal" data-target="#register" class="text-white btn btn-block btn-primary">Registreer
+                <a data-toggle="modal" data-target="#register" class="text-white btn btn-block btn-success">Registreer
                 </a>
             </div>
         </div>
