@@ -64,7 +64,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-primary elevation-4">
+    <aside class="main-sidebar sidebar-light-success elevation-4">
         <!-- Brand Logo -->
         <a href="#" class="brand-link bg-success">
             <img src="{{ url('/img/AdminLTELogo.png') }}"
@@ -187,7 +187,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/') }}" style="color: #28A745">Dashboard</a></li>
                             <li class="breadcrumb-item active">@yield('page_title')</li>
                         </ol>
                     </div>

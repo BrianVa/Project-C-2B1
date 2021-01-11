@@ -74,7 +74,7 @@
 
                     <!-- Profile Image -->
 
-                    <div class="card card-primary card-outline">
+                    <div class="card card-success">
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 <img style="width: 160px!important;height: 160px!important;" class="profile-user-img img-fluid img-circle"
@@ -83,14 +83,14 @@
 
                             </div>
                             <h3 class="profile-username text-center">{{ Auth::user()->firstname  }} {{ Auth::user()->lastname  }}</h3>
-                            <a href="#" data-toggle="modal" data-target="#data" class="btn btn-primary btn-block"><b>Gegevens wijzigen</b></a>
+                            <a href="#" data-toggle="modal" data-target="#data" class="btn btn-success btn-block"><b>Gegevens wijzigen</b></a>
                         </div>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
 
                     <!-- About Me Box -->
-                    <div class="card card-primary">
+                    <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Sessies deze maand</h3>
                         </div>
