@@ -113,14 +113,14 @@
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link active" href="#done" data-toggle="tab">Voltooid</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#soon" data-toggle="tab">Binnenkort</a></li>
+                                <li class="nav-item"><a class="nav-link active" href="#soon" data-toggle="tab">Binnenkort</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#todo" data-toggle="tab">Geannuleerd</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#done" data-toggle="tab">Voltooid</a></li>
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="active tab-pane" id="done">
+                                <div class="tab-pane" id="done">
                                     <table id="" class="display SessionOverview">
                                         <thead>
                                         <tr>
@@ -129,7 +129,7 @@
                                             <th>Eindtijd</th>
                                             <th>Sessieleider</th>
                                             <th>Aangemeld</th>
-                                            <th>Annuleren</th>
+                                            <th>Evalueer</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -147,7 +147,7 @@
                                     </table>
                                 </div>
                                 <!-- /.tab-pane -->
-                                <div class="tab-pane" id="soon">
+                                <div class="active tab-pane" id="soon">
                                     <table id="" class="display SessionOverview">
                                         <thead>
                                         <tr>
