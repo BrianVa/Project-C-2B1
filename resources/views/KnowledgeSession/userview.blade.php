@@ -33,25 +33,15 @@
             let end_date = new Date($end_date);
             let formatted_end = end_date.getDate() + "-" + months[end_date.getMonth()] + "-" + end_date.getFullYear();
             $("#date").text(formatted_begin+ ' tot ' + formatted_end);
-            test = JSON.parse($data);
-            $("input[name=speed_radio][value=" + test.speed_radio + "]").attr('checked', 'checked');
-            $("input[name=training_radio][value=" + test.training_radio + "]").attr('checked', 'checked');
-            $("input[name=performance_radio][value=" + test.performance_radio + "]").attr('checked', 'checked');
-            $("input[name=cases_radio][value=" + test.cases_radio + "]").attr('checked', 'checked');
-            $("input[name=time_radio][value=" + test.time_radio + "]").attr('checked', 'checked');
-            $("input[name=learn_radio][value=" + test.learn_radio + "]").attr('checked', 'checked');
-            $("input[name=knowledge_radio][value=" + test.knowledge_radio + "]").attr('checked', 'checked');
-            document.getElementById("speed").value = test.speed;
-            document.getElementById("training").value = test.training;
-            document.getElementById("performance").value = test.performance;
-            document.getElementById("cases").value = test.cases;
-            document.getElementById("time").value = test.time;
-            document.getElementById("learn").value = test.learn;
-            document.getElementById("knowledge").value = test.knowledge;
-            document.getElementById("learned").value = test.learned;
-            document.getElementById("missed").value = test.missed;
-            document.getElementById("strong").value = test.strong;
-            document.getElementById("weak").value = test.weak;
+            let data = JSON.parse($data);
+
+            Object.keys(data).forEach(function(key){
+                if (key.includes("radio")){
+                    $("input[name=" + key +"][value=" + data[key] + "]").attr('checked', 'checked');
+                } else {
+                    document.getElementById(key).value = data[key];
+                }
+            });
             document.getElementById("send_feedback").hidden = true;
             $("#feedback_form input").prop("disabled", true);
 
@@ -214,7 +204,7 @@
             @if(Auth::user()->role_id > 1)
                 <div class="card">
                     <div class="card-header">
-                        <h2>Aanmeldingen</h2>
+                        <h2>Feedback</h2>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                 <i class="fa fa-minus"></i></button>

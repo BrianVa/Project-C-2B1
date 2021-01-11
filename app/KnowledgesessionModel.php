@@ -225,7 +225,7 @@ class KnowledgesessionModel extends Model
     function attendUser($sid){
         echo $sid;
         $update = DB::table('sessionorders')
-            ->where("know_id", "=", $sid)
+            ->where("id", "=", $sid)
             ->update(["attended" => 1]);
 
         if($update !== false){
