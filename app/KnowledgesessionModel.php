@@ -211,11 +211,23 @@ class KnowledgesessionModel extends Model
             "know_id" => $request->session_id,
             "data" => $json,
         );
-        $insert = DB::table('sessionsevaluation')->insert($data);
+        $check  = DB::table('sessionsevaluation')
+            ->select()
+            ->where([
+                ['sessionsevaluation.know_id','=',$request->session_id],
+                ['sessionsevaluation.user_id', '=',Auth::user()->id]
+            ])
+            ->get()
+            ->first();
 
-
-        if($insert !== false){
-            return true;
+        if($check == null){
+            $insert = DB::table('sessionsevaluation')->insert($data);
+            if($insert !== false){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         else{
             return false;
