@@ -2,7 +2,6 @@
 
 namespace App;
 
-use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +38,7 @@ class SessionOrderModel extends Model
                 $data = array(
                     "user_id" => Auth::user()->id,
                     "know_id" => $id,
-                    "sign_up_at" => new DateTime(),
+                    "sign_up_at" => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
                 );
                 $insert = DB::table($this->table)->insertGetId($data);
 
@@ -159,7 +158,7 @@ class SessionOrderModel extends Model
                 $data = array(
                     "user_id" => $id,
                     "know_id" => $know_id,
-                    "sign_up_at" => new DateTime(),
+                    "sign_up_at" => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
                 );
                 $insert = DB::table($this->table)->insertGetId($data);
 

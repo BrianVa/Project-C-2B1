@@ -24,7 +24,6 @@ class KnowledgesessionModel extends Model
         );
         $insert = DB::table($this->table)->insert($data);
 
-
         if($insert !== false){
             return true;
         }
@@ -79,9 +78,7 @@ class KnowledgesessionModel extends Model
         $sessions = DB::table($this->table)
             ->select(array('knowledgesessions.id as k_id', 'users.id as u_id', 'knowledgesessions.*', 'users.*'))
             ->Leftjoin('users', 'knowledgesessions.user_id','=','users.id')
-            ->where([
-                ['knowledgesessions.begin_date','>=', new DateTime()]
-            ])
+            ->whereDate('knowledgesessions.begin_date', '>=', \Carbon\Carbon::now()->format('Y-m-d H:i:s'))
             ->groupBy('knowledgesessions.id')
             ->orderBy('knowledgesessions.begin_date', 'asc')
             ->get();

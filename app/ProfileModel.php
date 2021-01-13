@@ -66,38 +66,51 @@ class ProfileModel extends Model
         }
     }
     function getsessionsorders($id, $type){
-        $now = new DateTime();
-        $select = array();
-
         if($type == 'now'){
-            $select = [
-                ['sessionorders.user_id', '=', $id],
-                ['knowledgesessions.begin_date', '>=', $now],
-                ['sessionorders.cancelled', '=', false]
-            ];
+
+            $session = DB::table("sessionorders")
+                ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
+                ->join('users', 'knowledgesessions.user_id','=','users.id')
+                ->select('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id' ,'knowledgesessions.*', 'sessionorders.*', 'users.*')
+                ->where([
+                    ['sessionorders.user_id', '=', $id],
+                    ['sessionorders.cancelled', '=', false]
+                ])
+                ->whereDate('knowledgesessions.begin_date', '>=', \Carbon\Carbon::now()->format('Y-m-d H:i:s'))
+                ->get();
+
+            return $session;
         }
         elseif($type == 'done'){
-            $select = [
-                ['sessionorders.user_id', '=', $id],
-                ['knowledgesessions.begin_date', '<', $now],
-                ['sessionorders.cancelled', '=', false]
-            ];
+
+            $session = DB::table("sessionorders")
+                ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
+                ->join('users', 'knowledgesessions.user_id','=','users.id')
+                ->select('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id' ,'knowledgesessions.*', 'sessionorders.*', 'users.*')
+                ->where([
+                    ['sessionorders.user_id', '=', $id],
+                    ['sessionorders.cancelled', '=', false]
+                ])
+                ->whereDate('knowledgesessions.begin_date', '<', \Carbon\Carbon::now()->format('Y-m-d H:i:s'))
+                ->get();
+
+            return $session;
 
         }
         elseif($type == 'can'){
-            $select = [
-                ['sessionorders.user_id', '=', $id],
-                ['sessionorders.cancelled', '=', true]
-            ];
-        }
-        $session = DB::table("sessionorders")
-            ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
-            ->join('users', 'knowledgesessions.user_id','=','users.id')
-            ->select('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id' ,'knowledgesessions.*', 'sessionorders.*', 'users.*')
-            ->where($select)
-            ->get();
 
-        return $session;
+            $session = DB::table("sessionorders")
+                ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
+                ->join('users', 'knowledgesessions.user_id','=','users.id')
+                ->select('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id' ,'knowledgesessions.*', 'sessionorders.*', 'users.*')
+                ->where([
+                    ['sessionorders.user_id', '=', $id],
+                    ['sessionorders.cancelled', '=', true]
+                ])
+                ->get();
+
+            return $session;
+        }
     }
 
     function getsessionssoon($id){
