@@ -60,6 +60,17 @@
                 <a href="{{url('/dashboard')}}" class="nav-link">Dashboard</a>
             </li>
         </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/logout') }}">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
     </nav>
     <!-- /.navbar -->
 
@@ -106,12 +117,6 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ url('/logout') }}" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Uitloggen</p>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a href="{{ url('/profiel') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>

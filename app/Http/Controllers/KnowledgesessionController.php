@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeModel;
+use App\Mail\CancelledByFac;
 use App\Mail\CancelSession;
 use App\Mail\SignUpSession;
 use Illuminate\Http\Request;
@@ -180,8 +181,7 @@ class KnowledgesessionController extends Controller
     function anusession(Request $request){
         $session = new SessionOrderModel();
         if($session->anuSession($request->route('know_id'), $request->route('user_id'))){
-//doesnt work need to fix the id!!!!!!
-            // \Mail::to('0952635@hr.nl')->send(new CancelledByFac($session->GetSessionById($request->route('id'))));
+             \Mail::to(Auth::user()->email)->send(new CancelledByFac($session->GetSessionById($request->route('id'))));
             return redirect()->back()->with('succesMessage', 'Je hebt de kennissessie geannuleerd');
         }else{
             return redirect()->back()->with('errorMessage', 'er ging iets fout');
@@ -195,8 +195,7 @@ class KnowledgesessionController extends Controller
             $data = $session->DeleteSession($request->route('id'));
 
             if($data){
-            //    $d = $session->DeleteSession($request->route('id'));
-                // \Mail::to('0952635@hr.nl')->send(new CancelSession($d));
+                 \Mail::to(Auth::user()->email)->send(new CancelSession($data));
                 return redirect()->back()->with('succesMessage', 'Je hebt een kennissessie verwijderd!');
             }else{
                 return redirect()->back()->with('errorMessage', 'er ging iets fout');
