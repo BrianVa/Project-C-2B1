@@ -97,7 +97,10 @@
         <div class="card">
             <div class="card-header">
                 <h2>{{  $data->title }}</h2>
-                <h3 class="card-title">{{ $data->firstname }} {{ $data->lastname }}</h3>
+                <h3 class="card-title">{{ $data->firstname }} {{ $data->lastname }}</h3><h4 class="card-title", style="text-align:right">begintijd: {{date_format(new Datetime($data->begin_date),'D j F G:i Y')}}</h4>
+
+                <h5 class="card-title", style="text-align:right"> eindtijd: {{date_format(new Datetime($data->end_date),'D j F G:i Y')}}</h5>
+
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i></button>

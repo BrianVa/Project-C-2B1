@@ -68,7 +68,6 @@ class ProfileModel extends Model
     function getsessionsorders($id, $type){
         $now = new DateTime();
         $select = array();
-
         if($type == 'now'){
             $select = [
                 ['sessionorders.user_id', '=', $id],
