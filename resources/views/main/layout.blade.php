@@ -54,16 +54,16 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#"><i class=" fa fa-bars"></i></a>
+                <a class="nav-link" data-widget="pushmenu" href="#" style="font-size: 24px"><i class=" fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{url('/dashboard')}}" class="nav-link">Dashboard</a>
+                <a href="{{url('/dashboard')}}" class="nav-link" style="font-size: 18px; vertical-align: center; horiz-align: center">Dashboard</a>
             </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/logout') }}">
+                <a class="nav-link" href="{{ url('/logout') }}" style="font-size: 24px">
                     <i class="fa fa-sign-out"></i>
                 </a>
             </li>
