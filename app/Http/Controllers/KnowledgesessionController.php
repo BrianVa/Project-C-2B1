@@ -122,7 +122,7 @@ class KnowledgesessionController extends Controller
         $data = $session->SetOrder($request->route('id'));
 
         if($data > 0){
-            \Mail::to(Auth::user()->email)->send(new SignUpSession($session->GetSessionById($request->route($data))));
+          //  \Mail::to(Auth::user()->email)->send(new SignUpSession($session->GetSessionById($request->route($data))));
             return redirect()->back()->with('succesMessage', 'Je bent aangemeld voor deze kennissessie! ');
         }else{
             return redirect()->back()->with('errorMessage', 'er ging iets fout');
@@ -134,7 +134,7 @@ class KnowledgesessionController extends Controller
         {
             $session = new SessionOrderModel();
             if($session->CancelSession($request->route('id'))){
-                \Mail::to(Auth::user()->email)->send(new CancelSession($session->GetSessionById($request->route('id'))));
+               // \Mail::to(Auth::user()->email)->send(new CancelSession($session->GetSessionById($request->route('id'))));
                 return redirect()->back()->with('succesMessage', 'Je bent afgemeld voor deze kennissessie!');
             }else{
                 return redirect()->back()->with('errorMessage', 'er ging iets fout');
@@ -185,7 +185,7 @@ class KnowledgesessionController extends Controller
     function anusession(Request $request){
         $session = new SessionOrderModel();
         if($session->anuSession($request->route('know_id'), $request->route('user_id'))){
-             \Mail::to(Auth::user()->email)->send(new CancelledByFac($session->GetSessionById($request->route('id'))));
+            // \Mail::to(Auth::user()->email)->send(new CancelledByFac($session->GetSessionById($request->route('id'))));
             return redirect()->back()->with('succesMessage', 'Je hebt de kennissessie geannuleerd');
         }else{
             return redirect()->back()->with('errorMessage', 'er ging iets fout');
@@ -200,7 +200,7 @@ class KnowledgesessionController extends Controller
             $data = $session->DeleteSession($request->route('id'));
 
             if($data){
-                 \Mail::to(Auth::user()->email)->send(new CancelSession($data));
+               //  \Mail::to(Auth::user()->email)->send(new CancelSession($data));
                 return redirect()->back()->with('succesMessage', 'Je hebt een kennissessie verwijderd!');
             }else{
                 return redirect()->back()->with('errorMessage', 'er ging iets fout');
@@ -227,7 +227,7 @@ class KnowledgesessionController extends Controller
         $data = $session->AddAttendee($request->route('know_id'), $request->route('id'));
 
         if($data > 0){
-            // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
+            // \Mail::to(Auth::user()->email)->send(new SignUpSession($session->GetSessionById($request->route($data))));
             return redirect()->back()->with('succesMessage', 'Je hebt een deelnemer toegevoegd');
         }else{
             return redirect()->back()->with('errorMessage', 'er ging iets fout');

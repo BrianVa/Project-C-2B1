@@ -97,7 +97,7 @@ class MainController extends Controller
 
         if($result){
             $collection = collect(['firstname' => $request->firstname, 'lastname' => $request->lastname, 'ver_code' => $code]);
-            \Mail::to($request->email)->send(new RegMail($collection));
+           // \Mail::to($request->email)->send(new RegMail($collection));
             return redirect()->back()->with('succesMessage', 'Succes! Uw account is aangemaakt. Verifieer uw email om te kunnen inloggen.');
         }else{
             return redirect()->back()->with('errorMessage', 'Er ging iets fout, probeer het opnieuw.');

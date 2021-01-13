@@ -9,7 +9,7 @@ class Users_Table extends Seeder
     public function run()
     {
 //brian
-        DB::table('Users')->insert([
+        /*DB::table('Users')->insert([
             'firstname' => 'Brian',
             'lastname' => 'Vaartjes',
             'email' => '0952635@hr.nl',
@@ -23,9 +23,9 @@ class Users_Table extends Seeder
             'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
-        ]);
+        ]);*/
 //Ingrid
-        DB::table('Users')->insert([
+        /*DB::table('Users')->insert([
             'firstname' => 'Ingrid',
             'lastname' => 'Bouman',
             'email' => '0927209@hr.nl',
@@ -39,9 +39,9 @@ class Users_Table extends Seeder
             'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
-        ]);
+        ]);*/
 //Laura
-        DB::table('Users')->insert([
+        /*DB::table('Users')->insert([
             'firstname' => 'Laura',
             'lastname' => 'Bos',
             'email' => '0934987@hr.nl',
@@ -55,9 +55,9 @@ class Users_Table extends Seeder
             'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
-        ]);
+        ]);*/
 //Koen
-        DB::table('Users')->insert([
+        /*DB::table('Users')->insert([
             'firstname' => 'Koen',
             'lastname' => 'Schreuder',
             'email' => '0895905@hr.nl',
@@ -71,9 +71,9 @@ class Users_Table extends Seeder
             'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
-        ]);
+        ]);*/
 //Diederik
-        DB::table('Users')->insert([
+        /*DB::table('Users')->insert([
             'firstname' => 'Diederik ',
             'lastname' => 'van Walraven',
             'email' => '0896990@hr.nl',
@@ -87,7 +87,7 @@ class Users_Table extends Seeder
             'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
-        ]);
+        ]);*/
 //test
         DB::table('Users')->insert([
             'firstname' => 'Test',
