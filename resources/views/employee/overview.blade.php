@@ -40,7 +40,6 @@
                         <th>Aangemeld op</th>
                         <th>Actief</th>
                         <th>Bekijken</th>
-                        <th>Verwijderen</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,7 +53,6 @@
                         <td>{{ date_format(new Datetime($user->created_at),'d-m-Y') }}</td>
                         <td>{{ $user->active ? 'Actief' : 'Inactief' }}</td>
                         <td> <a href="{{url('/gebruiker')}}/{{$user->id}}"  class="btn btn-primary btn-block"><b>Bekijken</b></a></td>
-                        <td><button type="button" class="btn btn-danger">Verwijderen</button></td>
                     </tr>
                     @endforeach
                     </tbody>

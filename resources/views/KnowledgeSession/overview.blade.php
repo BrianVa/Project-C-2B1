@@ -55,7 +55,7 @@
                     <td>{{ $session ->firstname }} {{ $session->lastname }}</td>
                     <td>({{ $session->max_atendees - $session->orders }}/{{ $session->max_atendees }})</td>
                     @if(Auth::user()->role_id > 1)
-                        <td><a href="{{url('/sessiebeheer')}}/{{ $session->k_id }}" class="btn btn-success"><b>Aanpassen</b></a>
+                        <td><a href="{{url('/sessiebeheer')}}/{{ $session->k_id }}" class=" btn btn-success"><b>Aanpassen</b></a>
 
                     @endif
                     <td> <a href="{{url('/kennissessie')}}/{{ $session->k_id }}"  class="btn btn-primary btn-block"><b>Bekijken</b></a></td>
