@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
-
+    // deze functie laad de view in van het gebruikers overzicht
     function EmployeeView(){
         if(isset(Auth::user()->email)) {
             $Employee = new EmployeeModel();
@@ -21,7 +21,7 @@ class EmployeeController extends Controller
             return redirect('/');
         }
     }
-
+    //deze functie laad de gebruikers pagina op
     function EmployeeDetails(Request $request)
     {
         $userid = $request->route('id');
@@ -33,7 +33,7 @@ class EmployeeController extends Controller
             'roles' => $roles
         ]);
     }
-
+    // deze functie valideerd de update gegevens van een gebruiker een stuurd de data op naar de model
     function UpdateEmployee(Request $request)
     {
         $rules = array(

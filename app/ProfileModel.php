@@ -14,7 +14,7 @@ class ProfileModel extends Model
 {
     protected $table = 'users';
 
-
+    // deze functie haalt de gegevens op van de ingelogde gebruiker
     function getdata($id){
         $user = DB::table($this->table)
             ->join('roles', 'users.role_id','=','roles.id')
@@ -24,6 +24,7 @@ class ProfileModel extends Model
             ->first();
         return $user;
     }
+    //deze functie update de gegevens op van de ingelogde gebruiker
     function updateuser($request, $id){
 
         $data = array(
@@ -65,6 +66,7 @@ class ProfileModel extends Model
             return false;
         }
     }
+    // deze functie haalt de sessies van de gebruiker op die ingeloged is
     function getsessionsorders($id, $type){
         if($type == 'now'){
 
@@ -112,7 +114,7 @@ class ProfileModel extends Model
             return $session;
         }
     }
-
+    // deze functie haald de sessie van deze maand op
     function getsessionssoon($id){
         $now = Carbon::now();
         $nu = new DateTime();

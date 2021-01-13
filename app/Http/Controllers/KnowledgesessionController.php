@@ -15,7 +15,7 @@ use Illuminate\support\Facades\Mail;
 
 class KnowledgesessionController extends Controller
 {
-
+    //deze functie laad de view pagina van de algemene kennissessies
     function KnowledgesessionView(){
         if(isset(Auth::user()->email))
         {
@@ -29,6 +29,7 @@ class KnowledgesessionController extends Controller
             return redirect('/');
         }
     }
+    //deze functie laad die view pagina van de organisator kennisessies
     function KnowledgesessionBeheer(){
         if(isset(Auth::user()->email))
         {
@@ -43,7 +44,7 @@ class KnowledgesessionController extends Controller
         }
     }
 
-
+    //deze functie laad die view pagina van de kennissessie toevoegpagina
     function addView(){
         if(isset(Auth::user()->email))
         {
@@ -58,6 +59,7 @@ class KnowledgesessionController extends Controller
         }
     }
 
+    //deze functie valideerd de data van de toegevoegde kennis sessie en stuurd de data naar de model als hij goed is
     function addSession(Request $request){
         $rules = [
             "title" => "required",
@@ -89,7 +91,7 @@ class KnowledgesessionController extends Controller
         }
     }
 
-
+    //deze functie haal alles op voor het kennissessie beheer van de admin en de organisator
     function SessionUserView(Request $request){
 
         if(isset(Auth::user()->email))
@@ -113,25 +115,26 @@ class KnowledgesessionController extends Controller
             return redirect('/');
         }
     }
-
+    //deze functie is voor het aanmelden van een kennissessie
     function SignupSession(Request $request){
 
         $session = new SessionOrderModel();
         $data = $session->SetOrder($request->route('id'));
 
         if($data > 0){
-           // \Mail::to('0952635@hr.nl')->send(new SignUpSession($session->GetSessionById($request->route($data))));
+            \Mail::to(Auth::user()->email)->send(new SignUpSession($session->GetSessionById($request->route($data))));
             return redirect()->back()->with('succesMessage', 'Je bent aangemeld voor deze kennissessie! ');
         }else{
             return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
+    //deze functie is voor het afmelden van een kennissessie
     function CancelSession(Request $request){
         if(isset(Auth::user()->email))
         {
             $session = new SessionOrderModel();
             if($session->CancelSession($request->route('id'))){
-               // \Mail::to('0952635@hr.nl')->send(new CancelSession($session->GetSessionById($request->route('id'))));
+                \Mail::to(Auth::user()->email)->send(new CancelSession($session->GetSessionById($request->route('id'))));
                 return redirect()->back()->with('succesMessage', 'Je bent afgemeld voor deze kennissessie!');
             }else{
                 return redirect()->back()->with('errorMessage', 'er ging iets fout');
@@ -141,7 +144,7 @@ class KnowledgesessionController extends Controller
             return redirect('/');
         }
     }
-
+    //deze functie laad de view pagina van de
     function SessionView(Request $request){
         if(isset(Auth::user()->email))
         {
@@ -155,7 +158,7 @@ class KnowledgesessionController extends Controller
             return redirect('/');
         }
     }
-
+    // deze functie valideerd de nieuwe kennissessie data en stuurd deze data naar de model
     function updateSession(Request $request){
 
         $rules = [
@@ -178,6 +181,7 @@ class KnowledgesessionController extends Controller
             return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
+    // deze functie anuleerd een kennissessie
     function anusession(Request $request){
         $session = new SessionOrderModel();
         if($session->anuSession($request->route('know_id'), $request->route('user_id'))){
@@ -188,6 +192,7 @@ class KnowledgesessionController extends Controller
         }
     }
 
+    // deze functie verwijdert een sessie die niet meer gebruikt word
     function DeleteSession(Request $request){
         if(isset(Auth::user()->email))
         {
@@ -205,7 +210,7 @@ class KnowledgesessionController extends Controller
             return redirect('/');
         }
     }
-
+    // deze functie verwijdert een gebruiker die aangemeld is voor een kennissesie
     function removeAttendee(Request $request){
         $session = new SessionOrderModel();
         if($session->RemoveAttendee($request->route('know_id'), $request->route('user_id'))){
@@ -216,6 +221,7 @@ class KnowledgesessionController extends Controller
         }
     }
 
+    // deze functie voegt een gebruiker toe aan een kennissessie
     function addAttendee(Request $request){
         $session = new SessionOrderModel();
         $data = $session->AddAttendee($request->route('know_id'), $request->route('id'));
@@ -227,6 +233,7 @@ class KnowledgesessionController extends Controller
             return redirect()->back()->with('errorMessage', 'er ging iets fout');
         }
     }
+    //deze functie valideerd het feedback formulier een stuurd de data naar de model
     function EvaluateSession(Request $request){
         $rules = [
             "training" => "required",
@@ -259,6 +266,7 @@ class KnowledgesessionController extends Controller
             return redirect()->back()->with('errorMessage', 'Er ging iets fout. u mag de sessie maar 1 keer evalueren');
         }
     }
+    //deze functie zet een gebruiker aanwezig voor een kennis sessie
     function attendUser(Request $request){
 
         $session = new KnowledgesessionModel();

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class KnowledgesessionModel extends Model
 {
     protected $table = "knowledgesessions";
-
+    //deze functie insert een nieuwe sessie in de database
     function insertsession($request, $id){
         $data = array(
             "title" => $request->title,
@@ -31,6 +31,7 @@ class KnowledgesessionModel extends Model
             return false;
         }
     }
+    //deze functie haalt alle sessie op van een organisator
     function getFacSessions(){
         $select = [];
         if (Auth::user()->role_id == 2){
@@ -73,6 +74,7 @@ class KnowledgesessionModel extends Model
         return $sessions;
     }
 
+    //deze functie haalt alle sessies op waar je nog voor kan aanmelden
     function GetSessions(){
 
         $sessions = DB::table($this->table)
@@ -89,6 +91,7 @@ class KnowledgesessionModel extends Model
             ->groupBy('sessionorders.know_id')
             ->get();
 
+        // deze aangemelden sessies worden gemerged
         if ($orders->isEmpty()) {
             foreach ($sessions as $session){
                 $session->orders = 0;
@@ -109,6 +112,7 @@ class KnowledgesessionModel extends Model
         }
         return $sessions;
     }
+    //deze functie haalt een sessie op met al zijn gebruikers
     function getSessionUsers($id){
         return DB::table('sessionorders')
             ->join('users', 'sessionorders.user_id','=','users.id')
@@ -116,6 +120,7 @@ class KnowledgesessionModel extends Model
             ->where('sessionorders.know_id', $id)
             ->get();
     }
+    //deze functie haalt een sessie op waar het id matched
     function getSessionDetails($id){
 
         return DB::table($this->table)
@@ -125,13 +130,14 @@ class KnowledgesessionModel extends Model
             ->first();
 
     }
+    // deze functie haalt user details op voor een sessie
     function getUsers(){
         return DB::table('users')
             ->select('users.firstname','users.lastname','users.id')
             ->where('users.role_id','>',1)
             ->get();
     }
-
+    //deze functie update een kennissessie in de database
     function updatesession($request){
         $data = array(
             "title" => $request->title,
@@ -154,6 +160,7 @@ class KnowledgesessionModel extends Model
             return false;
         }
     }
+    //deze functie checked of een gebruik zich all aangemeld heeft voor een sessie en meld zich aan is dat niet zo
     function checkOrder($id){
         $order = DB::table('sessionorders')
             ->select('sessionorders.id')
@@ -169,6 +176,7 @@ class KnowledgesessionModel extends Model
             return 1;
         }
     }
+    //deze functie verwijdert een kennissessie uit de database
     function DeleteSession($k_id){
         DB::table('sessionorders')->where('know_id', '=', $k_id)->delete();
         $result = DB::table('knowledgesessions')->where('id', '=', $k_id)->delete();
@@ -179,6 +187,7 @@ class KnowledgesessionModel extends Model
             return redirect()->back();
         }
     }
+    //deze functie zet de feedback data in de database
     function SaveEvaluation($request){
 
         $data = new \stdClass();
@@ -230,7 +239,7 @@ class KnowledgesessionModel extends Model
             return false;
         }
     }
-
+    // deze functie zet een gebruiker aanwezig
     function attendUser($sid){
         echo $sid;
         $update = DB::table('sessionorders')
@@ -244,7 +253,7 @@ class KnowledgesessionModel extends Model
             return false;
         }
     }
-
+    //deze functie haalt alle feedback op van een sessie
     function getFeedBack($id){
         return DB::table('sessionsevaluation')
             ->select()

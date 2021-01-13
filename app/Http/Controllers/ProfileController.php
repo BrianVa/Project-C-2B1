@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-
+    //deze functie laad het profiel van de gebruiker
     function ProfileView(){
         if(isset(Auth::user()->email)) {
             $profile = new ProfileModel();
@@ -30,7 +30,7 @@ class ProfileController extends Controller
             return redirect('/');
         }
     }
-
+    // deze functie valideert de update gegevens van de gebruiker en stuud ze naar de model
     function UpdateUserData(Request $request){
         $rules = array(
             "password" => "same:h_password",

@@ -14,6 +14,7 @@ use phpDocumentor\Reflection\Types\Collection;
 
 class MainController extends Controller
 {
+    // deze functie laad de login pagina
     function LoginView()
     {
         if(isset(Auth::user()->email))
@@ -28,6 +29,7 @@ class MainController extends Controller
         }
     }
 
+    // deze functie laad het dashboard
     function DashboardView()
     {
         if(isset(Auth::user()->email))
@@ -38,7 +40,7 @@ class MainController extends Controller
             return redirect('/');
         }
     }
-
+    // deze functie checkt of de gebruiker die wil inloggen ok kan en of mag inloggen
     function checklogin(Request $request)
     {
         $this->validate($request, [
@@ -65,13 +67,13 @@ class MainController extends Controller
             return back()->with('error', 'Verkeerde logingegevens.');
         }
     }
-
+    // deze functie in voor het uitloggen
     function logout(){
 
         Auth::logout();
         return redirect('/');
     }
-
+    // deze functie valideert de gegevens van een nieuwe gebruiker en stuurd de data naar de model
     function register(Request $request){
 
         $this->validate($request, [
@@ -102,6 +104,7 @@ class MainController extends Controller
         }
 
     }
+    // deze functie checked of de activatie mail goed is
     function verifyAccount(Request $request){
         $main = new MainModel();
         $result = $main->verifyAccount(\Illuminate\Support\Facades\Request::get('code'));

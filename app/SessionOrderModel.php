@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SessionOrderModel extends Model
 {
     protected $table = 'sessionorders';
-
+    //deze functie set een aanmelding voor een kennissessie in de database
     function SetOrder($id){
 
         $session = DB::table($this->table)
@@ -54,6 +54,7 @@ class SessionOrderModel extends Model
             return false;
         }
     }
+    //deze functie canceled een kennissessie
     function CancelSession($id){
         $data = array(
             "cancelled" => 1
@@ -70,6 +71,7 @@ class SessionOrderModel extends Model
             return false;
         }
     }
+    // deze functie haalt een sessie op waar id matched
     function GetSessionById($id){
         return DB::table($this->table)
             ->select()
@@ -78,6 +80,7 @@ class SessionOrderModel extends Model
             ->where('sessionorders.id','=',1)
             ->first();
     }
+    //deze functie annuleerd een sessie
     function anuSession($know_id, $user_id){
         $update = DB::table($this->table)
             ->where([
@@ -93,7 +96,7 @@ class SessionOrderModel extends Model
             return false;
         }
     }
-
+    //deze functie verwijdert een gebruiker van een sessie
     function RemoveAttendee($know_id, $user_id){
         $result = DB::table($this->table)
             ->where([
@@ -110,7 +113,7 @@ class SessionOrderModel extends Model
             return false;
         }
     }
-
+    //deze functie haalt alle aangemelde gebruikers op van een kennis sessie
     function GetApplicants($id){
 
         $test = array_map(function ($value) {
@@ -130,7 +133,7 @@ class SessionOrderModel extends Model
 
         return $users;
     }
-
+    // deze gebruiker voeged een gebruiker toe aan een sessie
     function AddAttendee($know_id, $id){
         $session = DB::table($this->table)
             ->select()

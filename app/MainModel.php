@@ -9,6 +9,7 @@ use DateTime;
 
 class MainModel extends Model
 {
+    // deze functie zet een gebruiker in de database
     function insertuser($request, $code){
         $data = array(
             "firstname" => $request->firstname,
@@ -33,6 +34,7 @@ class MainModel extends Model
             return false;
         }
     }
+    // deze functie verifieerd je account
     function verifyAccount($code){
         $check = DB::table('users')
             ->select('verification_code')

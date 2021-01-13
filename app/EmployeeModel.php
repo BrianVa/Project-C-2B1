@@ -10,6 +10,7 @@ class EmployeeModel extends Model
 {
     protected $table = 'users';
 
+    //deze functie haalt alle gebruikers op
     function GetUsers(){
         $user = DB::table($this->table)
             ->join('roles', 'users.role_id','=','roles.id')
@@ -19,7 +20,7 @@ class EmployeeModel extends Model
 
         return $user;
     }
-
+    //deze functie haalt 1 gebruiker op waar id matched
     function GetUser($id){
         $user = DB::table($this->table)
             ->join('roles', 'users.role_id','=','roles.id')
@@ -29,7 +30,7 @@ class EmployeeModel extends Model
             ->first();
         return $user;
     }
-
+    // deze functie update de gegevens van een gebruiker met data van de controller
     function updateuser($request, $id){
 
         $data = array(
