@@ -117,14 +117,13 @@ class ProfileModel extends Model
     // deze functie haald de sessie van deze maand op
     function getsessionssoon($id){
         $now = Carbon::now();
-        $nu = new DateTime();
         $session = DB::table("sessionorders")
             ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
+            ->join('users', 'users.id','=','knowledgesessions.user_id')
             ->select('knowledgesessions.id as k_id', 'sessionorders.id as s_id', 'users.id as u_id' ,'knowledgesessions.*', 'sessionorders.*', 'users.*')
             ->where([
                 ['sessionorders.user_id', '=', $id],
                 ['sessionorders.cancelled', '=', true],
-                ['knowledgesessions.begin_date', '<', $nu]
             ])
             ->whereMonth('knowledgesessions.begin_date', $now->month)
             ->limit(4)

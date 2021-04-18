@@ -17,7 +17,7 @@ class ProfileController extends Controller
             $sessionsnow = $profile->getsessionsorders(Auth::user()->id, 'now');
             $sessionsdone = $profile->getsessionsorders(Auth::user()->id, 'done');
             $sessionscan = $profile->getsessionsorders(Auth::user()->id, 'can');
-            $soon = $profile->getsessionsorders(Auth::user()->id, 'soon');
+            $soon = $profile->getsessionssoon(Auth::user()->id);
             return view('profile/profile', [
                 'data' => $data,
                 'sessionsnow' => $sessionsnow,

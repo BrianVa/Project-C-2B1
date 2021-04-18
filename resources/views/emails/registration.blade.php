@@ -7,9 +7,9 @@ Activeer
 @endcomponent
 
 Werkt de knop niet? klik dan hier: <a href="{{url('/verify?code=')}}{{$data["ver_code"]}}">activeer</a><br>
-<br>
+
 of kopieer deze regel in je browser en druk op enter: {{url('/verify?code=')}}{{$data["ver_code"]}}
 
-Bedankt,<br>
+Bedankt,
 {{ config('app.name') }} Team.
 @endcomponent

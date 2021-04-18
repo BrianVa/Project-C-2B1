@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/loggingin', 'MainController@checklogin');
 Route::post('/register', 'MainController@register');
 Route::get('/logout', 'MainController@logout')->middleware('auth', 'employee');
-Route::get('/', 'MainController@LoginView');
+Route::get('/', [ 'as' => 'login', 'uses' => 'MainController@LoginView']);
+
 Route::get('/verify','MainController@verifyAccount');
 
 //Admin

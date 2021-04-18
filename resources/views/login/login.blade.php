@@ -62,7 +62,7 @@
                 <div class="form-group has-feedback">
                     <input type="password" name="password" class="form-control" placeholder="Wachtwoord">
                 </div>
-                <button type="submit" class="btn btn-success btn-block btn-flat" style="border-radius: 4px">Login</button>
+                <button type="submit" name="login" class="btn btn-success btn-block btn-flat" style="border-radius: 4px">Login</button>
             </form>
 
             <div class="social-auth-links text-center mb-3">

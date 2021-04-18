@@ -1,21 +1,28 @@
 <?php
 
 namespace Tests\Feature;
-
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\SessionOrderModel;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
+    use RefreshDatabase;
+    /** @test */
+    public function test_session_cancel_function_success()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $this->seed();
+        $test = (new SessionOrderModel())->CancelSession(1);
+        $this->assertEquals(true,$test);
     }
+
+    /** @test */
+    public function test_session_cancel_function_fail()
+    {
+        $this->seed();
+        $test = (new SessionOrderModel())->CancelSession(999);
+        $this->assertEquals(false,$test);
+    }
+
 }
+

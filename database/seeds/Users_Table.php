@@ -9,7 +9,7 @@ class Users_Table extends Seeder
     public function run()
     {
 //brian
-        /*DB::table('Users')->insert([
+        DB::table('Users')->insert([
             'firstname' => 'Brian',
             'lastname' => 'Vaartjes',
             'email' => '0952635@hr.nl',
@@ -23,7 +23,7 @@ class Users_Table extends Seeder
             'dietary' => null,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime()
-        ]);*/
+        ]);
 //Ingrid
         /*DB::table('Users')->insert([
             'firstname' => 'Ingrid',
@@ -157,7 +157,7 @@ class Users_Table extends Seeder
         DB::table('Users')->insert([
             'firstname' => 'Marco',
             'lastname' => 'Campen',
-            'email' => 'm.campen@cimsolutions.nl',
+            'email' => 'marco@cimsolutions.nl',
             'verification_code' => sha1(time()),
             'verified' => 1,
             'password' => Hash::make('test'),

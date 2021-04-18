@@ -56,13 +56,23 @@ class SessionOrderModel extends Model
     }
     //deze functie canceled een kennissessie
     function CancelSession($id){
-        $data = array(
-            "cancelled" => 1
+        $session = DB::table($this->table)
+            ->select()
+            ->where([
+                ['id', '=',$id],
+            ])
+            ->exists();
 
-        );
+        if($session == false){
+            return false;
+        }
+
         $update = DB::table($this->table)
             ->where('id', $id)
-            ->update($data);
+            ->update(array(
+                "cancelled" => 1
+
+            ));
 
         if($update !== false){
             return true;
@@ -77,7 +87,7 @@ class SessionOrderModel extends Model
             ->select()
             ->join('users', 'sessionorders.user_id','=','users.id')
             ->join('knowledgesessions', 'sessionorders.know_id','=','knowledgesessions.id')
-            ->where('sessionorders.id','=',1)
+            ->where('sessionorders.id','=',$id)
             ->first();
     }
     //deze functie annuleerd een sessie
@@ -169,12 +179,23 @@ class SessionOrderModel extends Model
                     return $insert;
                 }
                 else{
-                    return 0;
+                    return false;
                 }
             }
         }
         else{
             return false;
         }
+    }
+    public function getsession($know_id,$id ){
+        return DB::table($this->table)
+            ->select()
+            ->where([
+                ['user_id', '=',$id],
+                ['know_id', '=',$know_id],
+                ['cancelled', '=',0]
+            ])
+            ->get()
+            ->first();
     }
 }
