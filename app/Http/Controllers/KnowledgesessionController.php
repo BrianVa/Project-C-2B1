@@ -79,7 +79,6 @@ class KnowledgesessionController extends Controller
 
         $session = new KnowledgesessionModel();
         if (Auth::user()->role_id > 1) {
-            dd($request);
             $result = $session->insertsession($request, intval($request->Sessionleader));
         }
         else {

@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Quality of training material:</label>
+                        <label for="">Kwaliteit van het trainingsmateriaal:</label>
                         <input type="text" name="training" class="form-control" id="training" value="">
                         @error('training') {{ $message }} @enderror
                     </div>
@@ -43,7 +43,7 @@
                         @error('training_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Speed of training:</label>
+                        <label for="">Snelheid van de training:</label>
                         <input type="text" name="speed" class="form-control" id="speed">
                         @error('speed') {{ $message }} @enderror
                     </div>
@@ -61,7 +61,7 @@
                         @error('speed_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Trainer's performance:</label>
+                        <label for="">Prestaties van de trainer:</label>
                         <input type="text" name="performance" class="form-control" id="performance" value="">
                         @error('performance') {{ $message }} @enderror
                     </div>
@@ -79,7 +79,7 @@
                         @error('performance_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Quality of cases:</label>
+                        <label for="">Kwaliteit van zaken:</label>
                         <input type="text" name="cases" class="form-control" id="cases" value="">
                         @error('cases') {{ $message }} @enderror
                     </div>
@@ -97,7 +97,7 @@
                         @error('cases_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Time to perform cases:</label>
+                        <label for="">Tijd om zaken uit te voeren:</label>
                         <input type="text" name="time" class="form-control" id="time" value="">
                         @error('time') {{ $message }} @enderror
                     </div>
@@ -115,7 +115,7 @@
                         @error('time_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">How much did you learn?</label>
+                        <label for="">Hoeveel heb je geleerd?</label>
                         <input type="text" name="learn" class="form-control" id="learn" value="">
                         @error('learn') {{ $message }} @enderror
                     </div>
@@ -133,7 +133,7 @@
                         @error('learn_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Trainer's knowledge on subject:</label>
+                        <label for="">Trainer's kennis over het onderwerp:</label>
                         <input type="text" name="knowledge" class="form-control" id="knowledge" value="">
                         @error('knowledge') {{ $message }} @enderror
                     </div>
@@ -151,22 +151,22 @@
                         @error('knowledge_radio') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Name three things that you've learned:</label>
+                        <label for="">Noem 3 dingen die je geleerd heb:</label>
                         <input type="text" name="learned" class="form-control" id="learned" value="">
                         @error('learned') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Name three things that you've missed:</label>
+                        <label for="">Noem 3 dingen die je gemist heb:</label>
                         <input type="text" name="missed" class="form-control" id="missed" value="">
                         @error('missed') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Name three strong points of the course:</label>
+                        <label for="">Noem 3 sterken dingen over de training:</label>
                         <input type="text" name="strong" class="form-control" id="strong" value="">
                         @error('strong') {{ $message }} @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Name three weak points of the course:</label>
+                        <label for="">Noem 3 zwake punten over de training:</label>
                         <input type="text" name="weak" class="form-control" id="weak" value="">
                         @error('weak') {{ $message }} @enderror
                     </div>
